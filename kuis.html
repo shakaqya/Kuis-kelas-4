@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kuis Surat At-Tariq - Kelas 4 SD</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#eaf5ec,#fff8e8);color:#24352d}
+.wrap{max-width:900px;margin:auto;padding:16px}
+.hero{background:#1f6b4a;color:#fff;border-radius:20px;padding:25px;text-align:center}
+.hero h1{margin:6px 0;font-size:30px}.arabic{font-size:32px}
+.progress{background:#fff;padding:12px;border-radius:14px;margin:15px 0;box-shadow:0 3px 12px #0001}
+.track{height:12px;background:#e7ece6;border-radius:10px;overflow:hidden}.bar{height:100%;width:0;background:#e4b84e}
+.card{background:#fff;border-radius:16px;padding:18px;margin:14px 0;border-left:6px solid #1f6b4a;box-shadow:0 3px 12px #0001}
+.option{display:block;border:2px solid #dbe4dc;border-radius:11px;padding:11px;margin:8px 0;cursor:pointer}
+.option:hover{background:#f1faf4;border-color:#2f8b63}
+button{border:0;border-radius:12px;padding:13px 20px;font-size:16px;font-weight:bold;background:#1f6b4a;color:white;cursor:pointer;margin:5px}
+button.alt{background:#e4b84e;color:#3d3211}
+.result{display:none;background:white;border-radius:18px;padding:22px;margin-top:18px;text-align:center}
+.score{font-size:46px;font-weight:bold;color:#1f6b4a}.review{text-align:left}
+.good,.bad{padding:9px;margin:7px 0;border-radius:8px}.good{background:#e8f6ea;border-left:5px solid #38a65a}.bad{background:#fff0ed;border-left:5px solid #b94d42}
+@media(max-width:600px){.hero h1{font-size:24px}.card{padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><div class="arabic">سُورَةُ الطَّارِقِ</div><h1>Kuis Surat At-Tāriq</h1><div>25 Soal Pilihan Ganda • Kelas 4 SD</div></div>
+<div class="progress"><b>Progress: <span id="pt">0/25</span></b><div class="track"><div class="bar" id="bar"></div></div></div>
+<form id="quiz"></form>
+<div style="text-align:center"><button type="button" onclick="checkQuiz()">✅ Lihat Nilai</button><button type="button" class="alt" onclick="resetQuiz()">🔄 Ulangi</button></div>
+<div class="result" id="result"><h2>Hasil Kuis</h2><div class="score" id="score"></div><p id="msg"></p><div class="review" id="review"></div></div>
+</div>
+<script>
+const data = [{"q": "Surat At-Tāriq merupakan surat ke-....", "options": ["84", "85", "86", "87"], "answer": 2}, {"q": "Surat At-Tāriq terdiri dari ... ayat.", "options": ["15", "17", "20", "22"], "answer": 1}, {"q": "Surat At-Tāriq termasuk golongan surat ....", "options": ["Madaniyah", "Makkiyah", "Syamiyah", "Hijaziyah"], "answer": 1}, {"q": "Nama At-Tāriq diambil dari ayat ....", "options": ["pertama", "kedua", "ketiga", "keempat"], "answer": 0}, {"q": "Arti At-Tāriq dalam materi adalah ....", "options": ["yang datang pada siang hari", "yang datang pada malam hari", "yang berjalan pada pagi hari", "yang terbang di langit"], "answer": 1}, {"q": "Kata At-Tāriq berkaitan dengan makna ....", "options": ["mengetuk atau memukul dengan palu", "berlari dengan cepat", "melihat dengan jelas", "berjalan di atas tanah"], "answer": 0}, {"q": "Lafaz وَالسَّمَاءِ وَالطَّارِقِ merupakan Surat At-Tāriq ayat ke ....", "options": ["1", "2", "3", "4"], "answer": 0}, {"q": "Lafaz النَّجْمُ الثَّاقِبُ terdapat pada ayat ke ....", "options": ["1", "2", "3", "4"], "answer": 2}, {"q": "Arti sederhana dari النَّجْمُ الثَّاقِبُ adalah ....", "options": ["bintang yang bersinar", "bumi yang terbelah", "air yang mengalir", "langit yang luas"], "answer": 0}, {"q": "Dalam Surat At-Tāriq dijelaskan bahwa setiap .... memiliki penjaga.", "options": ["rumah", "manusia", "hewan", "tumbuhan"], "answer": 1}, {"q": "Lafaz فَلْيَنْظُرِ الْإِنسَانُ مِمَّ خُلِقَ mengajak manusia memperhatikan ....", "options": ["tempat tinggalnya", "makanan yang dimakannya", "dari apa dirinya diciptakan", "pakaian yang dipakainya"], "answer": 2}, {"q": "Manusia dalam Surat At-Tāriq disebut diciptakan dari ....", "options": ["tanah dan batu", "air yang terpancar", "api yang menyala", "udara dan tanah"], "answer": 1}, {"q": "Lafaz إِنَّهُ عَلَىٰ رَجْعِهِ لَقَادِرٌ menjelaskan bahwa Allah ....", "options": ["tidak mengetahui manusia", "mampu membangkitkan kembali manusia", "membutuhkan bantuan manusia", "hanya menciptakan langit"], "answer": 1}, {"q": "Hari ketika segala rahasia manusia diperlihatkan disebutkan dalam ayat ....", "options": ["7", "8", "9", "10"], "answer": 2}, {"q": "Lafaz يَوْمَ تُبْلَى السَّرَائِرُ terdapat pada ayat ke ....", "options": ["7", "8", "9", "10"], "answer": 2}, {"q": "Pada hari pembalasan, manusia tidak memiliki ....", "options": ["makanan dan minuman", "kekuatan dan penolong", "rumah dan kendaraan", "pakaian dan tempat tinggal"], "answer": 1}, {"q": "Surat At-Tāriq menyebutkan sumpah Allah dengan ....", "options": ["langit dan bumi", "gunung dan laut", "matahari dan bulan", "sungai dan hujan"], "answer": 0}, {"q": "Lafaz وَالْأَرْضِ ذَاتِ الصَّدْعِ berarti ....", "options": ["demi langit yang memiliki hujan", "demi bumi yang terbelah", "demi bintang yang bersinar", "demi manusia yang beriman"], "answer": 1}, {"q": "إِنَّهُ لَقَوْلٌ فَصْلٌ merupakan ayat ke ....", "options": ["11", "12", "13", "14"], "answer": 2}, {"q": "Salah satu pesan Surat At-Tāriq adalah bahwa Al-Qur’an merupakan ....", "options": ["permainan", "cerita biasa", "perkataan yang benar dan tegas", "dongeng untuk anak-anak"], "answer": 2}, {"q": "Sikap yang tepat setelah mempelajari Surat At-Tāriq adalah ....", "options": ["menjadi sombong", "mengingkari kekuasaan Allah", "bersyukur dan taat kepada Allah", "malas membaca Al-Qur’an"], "answer": 2}, {"q": "Salah satu adab membaca Al-Qur’an adalah ....", "options": ["bermain-main saat membaca", "duduk dengan tertib dan khusyuk", "berbicara dengan teman", "membaca sambil berlari"], "answer": 1}, {"q": "Sebelum membaca Al-Qur’an, sebaiknya kita ....", "options": ["makan sebanyak-banyaknya", "bermain terlebih dahulu", "berwudu dan berada dalam keadaan suci", "tidur terlebih dahulu"], "answer": 2}, {"q": "Agar hafalan Surat At-Tāriq mudah dikuasai, sebaiknya kita ....", "options": ["menghafal semua ayat sekaligus", "menghafal sedikit demi sedikit secara rutin", "hanya membaca satu kali", "menghafal tanpa memahami bacaan"], "answer": 1}, {"q": "Cara yang baik untuk menghafal ayat Al-Qur’an adalah ....", "options": ["membaca sekali lalu berhenti", "membaca, mengulang, lalu menggabungkan dengan ayat sebelumnya", "hanya mendengarkan tanpa mencoba membaca", "menghafal ketika sedang bermain"], "answer": 1}];
+const form=document.getElementById("quiz");
+data.forEach((item,i)=>{let d=document.createElement("div");d.className="card";let s="<h3>"+(i+1)+". "+item.q+"</h3>";item.options.forEach((op,j)=>{s+='<label class="option"><input type="radio" name="q'+i+'" value="'+j+'" onchange="progress()"> <b>'+String.fromCharCode(65+j)+'.</b> '+op+'</label>';});d.innerHTML=s;form.appendChild(d);});
+function progress(){let n=0;data.forEach((x,i)=>{if(document.querySelector('input[name="q'+i+'"]:checked'))n++;});document.getElementById("pt").textContent=n+"/25";document.getElementById("bar").style.width=(n/25*100)+"%";}
+function checkQuiz(){let score=0,review="";data.forEach((item,i)=>{let el=document.querySelector('input[name="q'+i+'"]:checked');if(el&&Number(el.value)===item.answer){score++;review+='<div class="good"><b>'+(i+1)+'.</b> Benar — '+item.options[item.answer]+'</div>';}else{let mine=el?item.options[Number(el.value)]:"Belum dijawab";review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+mine+'<br>Jawaban benar: <b>'+item.options[item.answer]+'</b></div>';}});let nilai=Math.round(score/25*100);document.getElementById("score").textContent=score+" / 25";document.getElementById("msg").textContent="Nilai: "+nilai+" — "+(nilai>=90?"🌟 Hebat!":nilai>=75?"👏 Bagus!":nilai>=60?"💪 Terus berlatih!":"📚 Yuk pelajari lagi materinya!");document.getElementById("review").innerHTML=review;document.getElementById("result").style.display="block";window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});}
+function resetQuiz(){form.reset();document.getElementById("result").style.display="none";progress();window.scrollTo({top:0,behavior:"smooth"});}
+</script>
+</body>
+</html>
