@@ -3,40 +3,69 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kuis Surat At-Tariq - Kelas 4 SD</title>
+<title>Kuis Aku Tumbuh Besar - 40 Soal</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#eaf5ec,#fff8e8);color:#24352d}
-.wrap{max-width:900px;margin:auto;padding:16px}
-.hero{background:#1f6b4a;color:#fff;border-radius:20px;padding:25px;text-align:center}
-.hero h1{margin:6px 0;font-size:30px}.arabic{font-size:32px}
-.progress{background:#fff;padding:12px;border-radius:14px;margin:15px 0;box-shadow:0 3px 12px #0001}
-.track{height:12px;background:#e7ece6;border-radius:10px;overflow:hidden}.bar{height:100%;width:0;background:#e4b84e}
-.card{background:#fff;border-radius:16px;padding:18px;margin:14px 0;border-left:6px solid #1f6b4a;box-shadow:0 3px 12px #0001}
-.option{display:block;border:2px solid #dbe4dc;border-radius:11px;padding:11px;margin:8px 0;cursor:pointer}
-.option:hover{background:#f1faf4;border-color:#2f8b63}
-button{border:0;border-radius:12px;padding:13px 20px;font-size:16px;font-weight:bold;background:#1f6b4a;color:white;cursor:pointer;margin:5px}
-button.alt{background:#e4b84e;color:#3d3211}
-.result{display:none;background:white;border-radius:18px;padding:22px;margin-top:18px;text-align:center}
-.score{font-size:46px;font-weight:bold;color:#1f6b4a}.review{text-align:left}
-.good,.bad{padding:9px;margin:7px 0;border-radius:8px}.good{background:#e8f6ea;border-left:5px solid #38a65a}.bad{background:#fff0ed;border-left:5px solid #b94d42}
-@media(max-width:600px){.hero h1{font-size:24px}.card{padding:14px}}
+:root{--green:#176b4b;--green2:#238b63;--gold:#efbd45;--cream:#fff8e8;--ink:#18352a;--line:#dbe8df;--good:#dff5e6;--bad:#ffe7e3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#eef9f2,#fff9ec);color:var(--ink);line-height:1.55}.wrap{max-width:980px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,var(--green),#0e513a);color:#fff;border-radius:24px;padding:28px;text-align:center;box-shadow:0 10px 30px #174b3520}.hero h1{margin:5px 0;font-size:clamp(28px,5vw,42px)}.badge{display:inline-block;background:var(--gold);color:#3b2e0c;font-weight:800;padding:5px 12px;border-radius:999px}.sticky{position:sticky;top:0;z-index:5;background:#eef9f2ed;backdrop-filter:blur(8px);padding:10px 0}.progress{background:#fff;border-radius:16px;padding:12px 15px;box-shadow:0 4px 15px #00000010}.track{height:12px;background:#e8eee9;border-radius:99px;overflow:hidden;margin-top:8px}.bar{height:100%;width:0;background:var(--gold);transition:.2s}.card{background:#fff;border-radius:18px;padding:18px;margin:14px 0;border:1px solid #e4eee8;box-shadow:0 5px 18px #174b3510}.card h3{margin-top:0;color:var(--green)}.option{display:block;border:2px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;cursor:pointer;background:#fff;transition:.15s}.option:hover{border-color:var(--green2);background:#f1faf4}.option input{margin-right:8px;accent-color:var(--green)}.actions{text-align:center;padding:10px 0 20px}button{border:0;border-radius:12px;padding:13px 20px;font-size:16px;font-weight:800;background:var(--green);color:#fff;cursor:pointer;margin:5px}button.alt{background:var(--gold);color:#3d3210}.result{display:none;background:#fff;border-radius:20px;padding:24px;margin:18px 0;box-shadow:0 6px 20px #0001}.score{font-size:48px;font-weight:900;color:var(--green);text-align:center}.msg{text-align:center;font-size:18px;font-weight:700}.review{margin-top:18px}.good,.bad{padding:10px 12px;border-radius:10px;margin:7px 0}.good{background:var(--good);border-left:5px solid #42a665}.bad{background:var(--bad);border-left:5px solid #c95b4d}.footer{text-align:center;color:#60776d;padding:20px;font-size:14px}@media(max-width:600px){.wrap{padding:10px}.card{padding:14px}.hero{padding:22px 15px}.option{font-size:15px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="hero"><div class="arabic">سُورَةُ الطَّارِقِ</div><h1>Kuis Surat At-Tāriq</h1><div>25 Soal Pilihan Ganda • Kelas 4 SD</div></div>
-<div class="progress"><b>Progress: <span id="pt">0/25</span></b><div class="track"><div class="bar" id="bar"></div></div></div>
+<header class="hero"><span class="badge">Bahasa Indonesia • Kelas IV SD</span><h1>🌱 Kuis “Aku Tumbuh Besar”</h1><p>40 soal pilihan ganda interaktif dari materi Bab 1. Pilih satu jawaban pada setiap soal, lalu tekan <b>Lihat Nilai</b>.</p></header>
+<div class="sticky"><div class="progress"><b>Progress: <span id="pt">0/40</span></b><div class="track"><div class="bar" id="bar"></div></div></div></div>
 <form id="quiz"></form>
-<div style="text-align:center"><button type="button" onclick="checkQuiz()">✅ Lihat Nilai</button><button type="button" class="alt" onclick="resetQuiz()">🔄 Ulangi</button></div>
-<div class="result" id="result"><h2>Hasil Kuis</h2><div class="score" id="score"></div><p id="msg"></p><div class="review" id="review"></div></div>
+<div class="actions"><button type="button" onclick="checkQuiz()">✅ Lihat Nilai</button><button type="button" class="alt" onclick="resetQuiz()">🔄 Ulangi Kuis</button></div>
+<section class="result" id="result"><h2 style="text-align:center">Hasil Kuis</h2><div class="score" id="score"></div><div class="msg" id="msg"></div><div class="review" id="review"></div></section>
+<div class="footer">Media pembelajaran Bab 1 “Aku Tumbuh Besar” • Kelas IV SD</div>
 </div>
 <script>
-const data = [{"q": "Surat At-Tāriq merupakan surat ke-....", "options": ["84", "85", "86", "87"], "answer": 2}, {"q": "Surat At-Tāriq terdiri dari ... ayat.", "options": ["15", "17", "20", "22"], "answer": 1}, {"q": "Surat At-Tāriq termasuk golongan surat ....", "options": ["Madaniyah", "Makkiyah", "Syamiyah", "Hijaziyah"], "answer": 1}, {"q": "Nama At-Tāriq diambil dari ayat ....", "options": ["pertama", "kedua", "ketiga", "keempat"], "answer": 0}, {"q": "Arti At-Tāriq dalam materi adalah ....", "options": ["yang datang pada siang hari", "yang datang pada malam hari", "yang berjalan pada pagi hari", "yang terbang di langit"], "answer": 1}, {"q": "Kata At-Tāriq berkaitan dengan makna ....", "options": ["mengetuk atau memukul dengan palu", "berlari dengan cepat", "melihat dengan jelas", "berjalan di atas tanah"], "answer": 0}, {"q": "Lafaz وَالسَّمَاءِ وَالطَّارِقِ merupakan Surat At-Tāriq ayat ke ....", "options": ["1", "2", "3", "4"], "answer": 0}, {"q": "Lafaz النَّجْمُ الثَّاقِبُ terdapat pada ayat ke ....", "options": ["1", "2", "3", "4"], "answer": 2}, {"q": "Arti sederhana dari النَّجْمُ الثَّاقِبُ adalah ....", "options": ["bintang yang bersinar", "bumi yang terbelah", "air yang mengalir", "langit yang luas"], "answer": 0}, {"q": "Dalam Surat At-Tāriq dijelaskan bahwa setiap .... memiliki penjaga.", "options": ["rumah", "manusia", "hewan", "tumbuhan"], "answer": 1}, {"q": "Lafaz فَلْيَنْظُرِ الْإِنسَانُ مِمَّ خُلِقَ mengajak manusia memperhatikan ....", "options": ["tempat tinggalnya", "makanan yang dimakannya", "dari apa dirinya diciptakan", "pakaian yang dipakainya"], "answer": 2}, {"q": "Manusia dalam Surat At-Tāriq disebut diciptakan dari ....", "options": ["tanah dan batu", "air yang terpancar", "api yang menyala", "udara dan tanah"], "answer": 1}, {"q": "Lafaz إِنَّهُ عَلَىٰ رَجْعِهِ لَقَادِرٌ menjelaskan bahwa Allah ....", "options": ["tidak mengetahui manusia", "mampu membangkitkan kembali manusia", "membutuhkan bantuan manusia", "hanya menciptakan langit"], "answer": 1}, {"q": "Hari ketika segala rahasia manusia diperlihatkan disebutkan dalam ayat ....", "options": ["7", "8", "9", "10"], "answer": 2}, {"q": "Lafaz يَوْمَ تُبْلَى السَّرَائِرُ terdapat pada ayat ke ....", "options": ["7", "8", "9", "10"], "answer": 2}, {"q": "Pada hari pembalasan, manusia tidak memiliki ....", "options": ["makanan dan minuman", "kekuatan dan penolong", "rumah dan kendaraan", "pakaian dan tempat tinggal"], "answer": 1}, {"q": "Surat At-Tāriq menyebutkan sumpah Allah dengan ....", "options": ["langit dan bumi", "gunung dan laut", "matahari dan bulan", "sungai dan hujan"], "answer": 0}, {"q": "Lafaz وَالْأَرْضِ ذَاتِ الصَّدْعِ berarti ....", "options": ["demi langit yang memiliki hujan", "demi bumi yang terbelah", "demi bintang yang bersinar", "demi manusia yang beriman"], "answer": 1}, {"q": "إِنَّهُ لَقَوْلٌ فَصْلٌ merupakan ayat ke ....", "options": ["11", "12", "13", "14"], "answer": 2}, {"q": "Salah satu pesan Surat At-Tāriq adalah bahwa Al-Qur’an merupakan ....", "options": ["permainan", "cerita biasa", "perkataan yang benar dan tegas", "dongeng untuk anak-anak"], "answer": 2}, {"q": "Sikap yang tepat setelah mempelajari Surat At-Tāriq adalah ....", "options": ["menjadi sombong", "mengingkari kekuasaan Allah", "bersyukur dan taat kepada Allah", "malas membaca Al-Qur’an"], "answer": 2}, {"q": "Salah satu adab membaca Al-Qur’an adalah ....", "options": ["bermain-main saat membaca", "duduk dengan tertib dan khusyuk", "berbicara dengan teman", "membaca sambil berlari"], "answer": 1}, {"q": "Sebelum membaca Al-Qur’an, sebaiknya kita ....", "options": ["makan sebanyak-banyaknya", "bermain terlebih dahulu", "berwudu dan berada dalam keadaan suci", "tidur terlebih dahulu"], "answer": 2}, {"q": "Agar hafalan Surat At-Tāriq mudah dikuasai, sebaiknya kita ....", "options": ["menghafal semua ayat sekaligus", "menghafal sedikit demi sedikit secara rutin", "hanya membaca satu kali", "menghafal tanpa memahami bacaan"], "answer": 1}, {"q": "Cara yang baik untuk menghafal ayat Al-Qur’an adalah ....", "options": ["membaca sekali lalu berhenti", "membaca, mengulang, lalu menggabungkan dengan ayat sebelumnya", "hanya mendengarkan tanpa mencoba membaca", "menghafal ketika sedang bermain"], "answer": 1}];
-const form=document.getElementById("quiz");
-data.forEach((item,i)=>{let d=document.createElement("div");d.className="card";let s="<h3>"+(i+1)+". "+item.q+"</h3>";item.options.forEach((op,j)=>{s+='<label class="option"><input type="radio" name="q'+i+'" value="'+j+'" onchange="progress()"> <b>'+String.fromCharCode(65+j)+'.</b> '+op+'</label>';});d.innerHTML=s;form.appendChild(d);});
-function progress(){let n=0;data.forEach((x,i)=>{if(document.querySelector('input[name="q'+i+'"]:checked'))n++;});document.getElementById("pt").textContent=n+"/25";document.getElementById("bar").style.width=(n/25*100)+"%";}
-function checkQuiz(){let score=0,review="";data.forEach((item,i)=>{let el=document.querySelector('input[name="q'+i+'"]:checked');if(el&&Number(el.value)===item.answer){score++;review+='<div class="good"><b>'+(i+1)+'.</b> Benar — '+item.options[item.answer]+'</div>';}else{let mine=el?item.options[Number(el.value)]:"Belum dijawab";review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+mine+'<br>Jawaban benar: <b>'+item.options[item.answer]+'</b></div>';}});let nilai=Math.round(score/25*100);document.getElementById("score").textContent=score+" / 25";document.getElementById("msg").textContent="Nilai: "+nilai+" — "+(nilai>=90?"🌟 Hebat!":nilai>=75?"👏 Bagus!":nilai>=60?"💪 Terus berlatih!":"📚 Yuk pelajari lagi materinya!");document.getElementById("review").innerHTML=review;document.getElementById("result").style.display="block";window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});}
-function resetQuiz(){form.reset();document.getElementById("result").style.display="none";progress();window.scrollTo({top:0,behavior:"smooth"});}
+const data=[
+['Tokoh dalam sebuah cerita adalah ....',['pelaku yang terdapat dalam cerita','tempat berlangsungnya cerita','pesan yang disampaikan cerita','judul yang diberikan pada cerita'],0],
+['Tokoh dalam cerita dapat berupa ....',['manusia saja','hewan saja','manusia, hewan, atau benda','benda saja'],2],
+['Konflik adalah ....',['permasalahan yang dialami tokoh','nama tempat dalam cerita','urutan halaman buku','judul sebuah cerita'],0],
+['Konflik batin adalah permasalahan yang terjadi ....',['di luar lingkungan sekolah','di dalam diri seorang tokoh','hanya antara dua tokoh','di tempat tinggal tokoh'],1],
+['Dalam contoh cerita tentang Beni, masalah yang dialami Beni adalah ....',['sepeda Beni hilang','baju olahraga Beni sudah kekecilan','Beni lupa membawa buku','Beni tidak memiliki sepatu'],1],
+['Pertumbuhan terutama berkaitan dengan perubahan ....',['ukuran tubuh','nama seseorang','jumlah teman','hobi seseorang'],0],
+['Contoh pertumbuhan manusia adalah ....',['tinggi dan berat badan bertambah','semakin pandai memilih teman','semakin matang mengendalikan emosi','semakin banyak pengalaman'],0],
+['Perkembangan berkaitan dengan perubahan ....',['ukuran sepatu saja','kemampuan berpikir dan kematangan emosi','warna pakaian','jumlah makanan'],1],
+['Salah satu faktor yang memengaruhi pertumbuhan adalah ....',['keturunan','pengalaman membaca saja','warna kesukaan','jumlah teman'],0],
+['Salah satu faktor yang memengaruhi perkembangan adalah ....',['lingkungan','ukuran rumah','warna rambut saja','jenis sepatu'],0],
+['Makna kata dapat dicari menggunakan ....',['KBBI','kalender','peta','kamus gambar saja'],0],
+['Jika sebuah kata memiliki imbuhan, saat mencari maknanya kita dapat mencari ....',['kata dasarnya','huruf terakhirnya saja','jumlah suku katanya saja','judul babnya'],0],
+['Verba adalah ....',['kata kerja','kata benda','kata sifat','kata bilangan'],0],
+['Contoh verba adalah ....',['makan','buku','besar','rumah'],0],
+['Nomina adalah ....',['kata kerja','kata benda','kata sifat','kata perintah'],1],
+['Contoh nomina adalah ....',['mencicipi','pedas','buku','membaca'],2],
+['Adjektiva adalah ....',['kata benda','kata kerja','kata sifat','kata bilangan'],2],
+['Contoh adjektiva adalah ....',['besar','makan','sepatu','membaca'],0],
+['Kata “ekspresi” bermakna ....',['pengungkapan perasaan atau pikiran','usaha untuk memulai sesuatu','mencoba rasa makanan','perubahan ukuran tubuh'],0],
+['Kata “mencicipi” bermakna ....',['mencoba merasakan makanan atau minuman','mengungkapkan pikiran','melakukan usaha sendiri','mengubah ukuran tubuh'],0],
+['Kata “berinisiatif” bermakna ....',['melakukan usaha sendiri untuk memulai sesuatu','mencoba merasakan makanan','mengungkapkan perasaan','menjadi lebih tinggi'],0],
+['Kalimat transitif adalah kalimat yang predikatnya ....',['membutuhkan objek','tidak pernah memiliki subjek','selalu berupa kata sifat','tidak memiliki predikat'],0],
+['Kalimat intransitif adalah kalimat yang predikatnya ....',['membutuhkan dua objek','tidak membutuhkan objek','selalu membutuhkan keterangan tempat','selalu berupa nomina'],1],
+['Kalimat “Heri menggunakan sepatu baru.” termasuk kalimat ....',['transitif','intransitif','tanya','seru'],0],
+['Pada kalimat “Heri menggunakan sepatu baru.”, objeknya adalah ....',['Heri','menggunakan','sepatu baru','baru'],2],
+['Pada kalimat “Heri menggunakan sepatu baru.”, kata “Heri” berfungsi sebagai ....',['subjek','predikat','objek','keterangan'],0],
+['Kalimat “Hani bersedih.” termasuk kalimat ....',['transitif','intransitif','majemuk','tanya'],1],
+['Pada kalimat “Hani bersedih.”, kata “Hani” berfungsi sebagai ....',['subjek','predikat','objek','keterangan'],0],
+['Cara cepat membedakan kalimat transitif adalah menanyakan ....',['melakukan apa atau siapa','di mana rumahnya','berapa umurnya','kapan bangun tidur'],0],
+['Huruf tegak bersambung ditulis ....',['secara bersambung tanpa terputus','dengan setiap huruf terpisah jauh','hanya menggunakan huruf kapital','tanpa memperhatikan bentuk huruf'],0],
+['Saat menulis huruf tegak bersambung, hal yang perlu diperhatikan adalah ....',['bentuk huruf dan kerapian','warna kertas saja','jumlah halaman saja','ukuran meja'],0],
+['Huruf kapital digunakan pada ....',['awal kalimat dan nama orang','semua kata dalam kalimat','akhir setiap kata','kata yang terdiri dari dua suku kata saja'],0],
+['Pada kalimat “Beni adalah anak yang baik.”, kata yang merupakan nama orang adalah ....',['Beni','adalah','anak','baik'],0],
+['Nilai karakter yang sesuai dengan materi adalah ....',['suka membantu','suka mengejek','malas belajar','tidak peduli'],0],
+['Anak yang mandiri berarti ....',['berusaha melakukan tugas sendiri','selalu meminta orang lain mengerjakan tugas','menghindari semua tugas','menunggu teman bekerja'],0],
+['Sikap peduli ditunjukkan dengan ....',['memperhatikan teman yang kesulitan','menertawakan teman yang salah','mengabaikan keluarga','menolak membantu siapa pun'],0],
+['Bertanggung jawab berarti ....',['menyelesaikan tugas dengan baik','meninggalkan tugas sebelum selesai','menyalahkan orang lain','menghindari kewajiban'],0],
+['Dalam contoh materi, Citra memakan telur gulung. Kata “memakan” termasuk ....',['verba','nomina','adjektiva','kata bilangan'],0],
+['Dalam contoh materi, “sepatu” termasuk kelas kata ....',['verba','nomina','adjektiva','kata sambung'],1],
+['Pernyataan yang tepat tentang pertumbuhan dan perkembangan adalah ....',['pertumbuhan berkaitan dengan ukuran tubuh, perkembangan dengan kemampuan dan kematangan','pertumbuhan hanya berkaitan dengan emosi','perkembangan hanya berkaitan dengan tinggi badan','pertumbuhan dan perkembangan memiliki arti yang selalu sama'],0]
+];
+const form=document.getElementById('quiz');
+data.forEach((item,i)=>{const card=document.createElement('section');card.className='card';let html='<h3>'+(i+1)+'. '+item[0]+'</h3>';item[1].forEach((op,j)=>{html+='<label class="option"><input type="radio" name="q'+i+'" value="'+j+'" onchange="progress()"><b>'+String.fromCharCode(65+j)+'.</b> '+op+'</label>'});card.innerHTML=html;form.appendChild(card)});
+function progress(){let n=0;data.forEach((_,i)=>{if(document.querySelector('input[name="q'+i+'"]:checked'))n++});document.getElementById('pt').textContent=n+'/40';document.getElementById('bar').style.width=(n/40*100)+'%'}
+function checkQuiz(){let score=0,review='';data.forEach((item,i)=>{const el=document.querySelector('input[name="q'+i+'"]:checked');const chosen=el?Number(el.value):-1;if(chosen===item[2]){score++;review+='<div class="good"><b>'+(i+1)+'.</b> Benar: '+item[1][item[2]]+'</div>'}else{review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+(chosen<0?'Belum dijawab':item[1][chosen])+'<br>Jawaban benar: <b>'+item[1][item[2]]+'</b></div>'}});const nilai=Math.round(score/40*100);document.getElementById('score').textContent=score+' / 40';document.getElementById('msg').textContent='Nilai: '+nilai+' — '+(nilai>=90?'🌟 Sangat baik!':nilai>=75?'👏 Bagus!':nilai>=60?'💪 Terus berlatih!':'📚 Pelajari kembali materinya, lalu coba lagi.');document.getElementById('review').innerHTML=review;document.getElementById('result').style.display='block';window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+function resetQuiz(){form.reset();document.getElementById('result').style.display='none';progress();window.scrollTo({top:0,behavior:'smooth'})}
 </script>
 </body>
 </html>
