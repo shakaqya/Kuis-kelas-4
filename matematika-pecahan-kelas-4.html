@@ -4,33 +4,33 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Matematika Kelas 4 — Pecahan</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:linear-gradient(135deg,#eef8f2,#e3f2fd);color:#263238}.top{background:linear-gradient(135deg,#176b4b,#1565c0);color:#fff;text-align:center;padding:32px 15px}.top h1{margin:8px 0;font-size:clamp(28px,6vw,44px)}.home{display:inline-block;text-decoration:none;background:#fff;color:#176b4b;padding:10px 16px;border-radius:10px;font-weight:800;margin-top:10px}.wrap{max-width:900px;margin:auto;padding:18px 14px}.card{background:#fff;border-radius:20px;padding:20px;margin:16px 0;box-shadow:0 6px 22px #0002}.q{border-top:1px solid #ddd;padding:20px 0}.q:first-child{border-top:0}.q h3{margin:0 0 12px}.choice{display:block;padding:12px;border:2px solid #ddd;border-radius:10px;margin:8px 0;cursor:pointer}.choice:hover{background:#f5f5f5}.choice input{margin-right:8px;transform:scale(1.15)}.feedback{margin-top:8px;font-weight:800;min-height:24px;line-height:1.5}.correct{background:#c8e6c9!important;border-color:#2e7d32!important}.wrong{background:#ffcdd2!important;border-color:#c62828!important}.submit{width:100%;padding:16px;background:#2e7d32;color:#fff;border:0;border-radius:12px;font-size:18px;font-weight:800;cursor:pointer}.submit:active{transform:scale(.99)}.result{display:none;text-align:center;background:#f1f8e9;border:2px solid #81c784}.score{font-size:50px;font-weight:900;color:#2e7d32}.note{color:#607d8b;text-align:center;font-size:14px}.type{display:inline-block;background:#e8eaf6;color:#3949ab;border-radius:20px;padding:5px 10px;font-size:13px;font-weight:800;margin-bottom:8px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:linear-gradient(135deg,#eef8f2,#e3f2fd);color:#263238}.top{background:linear-gradient(135deg,#176b4b,#1565c0);color:#fff;text-align:center;padding:32px 15px}.top h1{margin:8px 0;font-size:clamp(28px,6vw,44px)}.home{display:inline-block;text-decoration:none;background:#fff;color:#176b4b;padding:10px 16px;border-radius:10px;font-weight:800;margin-top:10px}.wrap{max-width:900px;margin:auto;padding:18px 14px}.card{background:#fff;border-radius:20px;padding:20px;margin:16px 0;box-shadow:0 6px 22px #0002}.q{border-top:1px solid #ddd;padding:20px 0}.q:first-child{border-top:0}.q h3{margin:0 0 12px}.choice{display:block;padding:12px;border:2px solid #ddd;border-radius:10px;margin:8px 0;cursor:pointer}.choice:hover{background:#f5f5f5}.choice input{margin-right:8px;transform:scale(1.15)}.feedback{margin-top:10px;font-weight:800;line-height:1.55;min-height:24px}.solution{margin-top:10px;padding:13px;background:#e3f2fd;border-left:5px solid #1565c0;border-radius:10px;color:#263238;font-weight:500}.solution b{color:#1565c0}.correct{background:#c8e6c9!important;border-color:#2e7d32!important}.wrong{background:#ffcdd2!important;border-color:#c62828!important}.submit{width:100%;padding:16px;background:#2e7d32;color:#fff;border:0;border-radius:12px;font-size:18px;font-weight:800;cursor:pointer}.submit:active{transform:scale(.99)}.result{display:none;text-align:center;background:#f1f8e9;border:2px solid #81c784}.score{font-size:50px;font-weight:900;color:#2e7d32}.note{color:#607d8b;text-align:center;font-size:14px}.type{display:inline-block;background:#e8eaf6;color:#3949ab;border-radius:20px;padding:5px 10px;font-size:13px;font-weight:800;margin-bottom:8px}
 </style></head>
 <body>
 <header class="top"><div>📚 MEDIA PEMBELAJARAN INTERAKTIF</div><h1>➗ Matematika Pecahan</h1><p>Kelas 4 (Shaka) — Latihan 15 Soal</p><a class="home" href="kelas4-menu.html">↩️ Kembali ke Menu Kelas 4</a></header>
 <main class="wrap">
-<div class="card"><p><b>Petunjuk:</b> Pilih jawaban yang paling tepat. Untuk soal dengan kotak centang, boleh memilih lebih dari satu jawaban. Setelah selesai, tekan <b>PERIKSA JAWABAN</b>. Jika jawaban salah, jawaban yang benar akan ditampilkan.</p><form id="quiz"></form><button id="checkBtn" class="submit" type="button">✅ PERIKSA JAWABAN</button></div>
+<div class="card"><p><b>Petunjuk:</b> Pilih jawaban yang paling tepat. Untuk soal dengan kotak centang, boleh memilih lebih dari satu jawaban. Setelah selesai, tekan <b>PERIKSA JAWABAN</b>. Setelah diperiksa, setiap soal akan menampilkan <b>jawaban benar dan cara pengerjaannya</b> dengan langkah sederhana sesuai tingkat Kelas 4 SD.</p><form id="quiz"></form><button id="checkBtn" class="submit" type="button">✅ PERIKSA JAWABAN</button></div>
 <div id="result" class="card result"><h2>🎉 Hasil Latihan</h2><div id="score" class="score"></div><p id="msg"></p><p id="wrong"></p></div>
 <p class="note">Materi: pecahan biasa, desimal, persen, pecahan senilai, perbandingan, dan soal cerita.</p>
 </main>
 <script>
 (function(){
 const qs=[
-{t:'mc',q:'Pecahan yang senilai dengan 3/4 adalah ....',o:['6/8','4/6','5/8','7/8'],a:[0]},
-{t:'mc',q:'Bentuk desimal dari 7/10 adalah ....',o:['0,07','0,7','7,0','70'],a:[1]},
-{t:'mc',q:'Bentuk persen dari 3/5 adalah ....',o:['30%','50%','60%','75%'],a:[2]},
-{t:'mc',q:'Pecahan yang nilainya paling besar adalah ....',o:['2/5','3/5','1/2','4/10'],a:[1]},
-{t:'mc',q:'Urutan pecahan dari yang terkecil ke terbesar adalah ....',o:['1/2, 2/5, 3/4','2/5, 1/2, 3/4','3/4, 1/2, 2/5','2/5, 3/4, 1/2'],a:[1]},
-{t:'multi',q:'Pilih semua pernyataan yang benar tentang 1/4.',o:['1/4 = 0,25','1/4 = 25%','1/4 = 50%','1/4 = 25/100'],a:[0,1,3]},
-{t:'multi',q:'Pilih semua bentuk yang nilainya sama dengan 0,5.',o:['1/2','5/10','50%','1/5'],a:[0,1,2]},
-{t:'multi',q:'Pilih semua pernyataan yang benar tentang 3/10.',o:['3/10 = 0,3','3/10 = 30%','0,3 lebih besar dari 0,5','30% lebih kecil dari 50%'],a:[0,1,3]},
-{t:'tf',q:'Rara memiliki 2/5 bagian kue. Tentukan Benar atau Salah: 2/5 = 0,4.',o:['Benar','Salah'],a:[0]},
-{t:'tf',q:'Rara memiliki 2/5 bagian kue. Tentukan Benar atau Salah: 40% lebih kecil dari 50%.',o:['Benar','Salah'],a:[0]},
-{t:'tf',q:'Budi membaca 3/4 bagian buku. Tentukan Benar atau Salah: 0,75 lebih kecil dari 0,5.',o:['Benar','Salah'],a:[1]},
-{t:'mc',q:'Ibu membeli pizza yang dipotong menjadi 8 bagian sama besar. Raka makan 3 potong. Pecahan pizza yang masih tersisa adalah ....',o:['3/8','5/8','5/3','3/5'],a:[1]},
-{t:'mc',q:'Hasil dari perbandingan berikut yang benar adalah ....',o:['1/2 > 3/4','4/5 < 7/10','0,6 < 0,8','35% > 50%'],a:[2]},
-{t:'mc',q:'Siti mempunyai pita sepanjang 1 meter. Ia menggunakan 3/10 meter. Pita yang tersisa adalah ....',o:['0,3 meter','0,5 meter','0,7 meter','0,8 meter'],a:[2]},
-{t:'mc',q:'Dalam kelas terdapat 20 siswa. Sebanyak 60% membawa bekal. Banyak siswa yang tidak membawa bekal adalah ....',o:['8 siswa','10 siswa','12 siswa','14 siswa'],a:[0]}
+{t:'mc',q:'Pecahan yang senilai dengan 3/4 adalah ....',o:['6/8','4/6','5/8','7/8'],a:[0],s:'Untuk mencari pecahan senilai, pembilang dan penyebut dikalikan dengan bilangan yang sama. 3/4 × 2/2 = 6/8. Jadi, jawabannya <b>A. 6/8</b>.'},
+{t:'mc',q:'Bentuk desimal dari 7/10 adalah ....',o:['0,07','0,7','7,0','70'],a:[1],s:'Pecahan berpenyebut 10 dapat langsung diubah ke desimal. 7/10 berarti 7 bagian dari 10, sehingga ditulis <b>0,7</b>. Jadi jawabannya <b>B. 0,7</b>.'},
+{t:'mc',q:'Bentuk persen dari 3/5 adalah ....',o:['30%','50%','60%','75%'],a:[2],s:'Ubah penyebut 5 menjadi 100: 3/5 = 3×20/5×20 = 60/100. Jadi 3/5 = <b>60%</b>. Jawabannya <b>C. 60%</b>.'},
+{t:'mc',q:'Pecahan yang nilainya paling besar adalah ....',o:['2/5','3/5','1/2','4/10'],a:[1],s:'Samakan penyebut menjadi 10: 2/5 = 4/10, 3/5 = 6/10, 1/2 = 5/10, dan 4/10 = 4/10. Yang terbesar adalah 6/10 = <b>3/5</b>. Jawabannya <b>B</b>.'},
+{t:'mc',q:'Urutan pecahan dari yang terkecil ke terbesar adalah ....',o:['1/2, 2/5, 3/4','2/5, 1/2, 3/4','3/4, 1/2, 2/5','2/5, 3/4, 1/2'],a:[1],s:'Ubah ke desimal: 2/5 = 0,4; 1/2 = 0,5; 3/4 = 0,75. Urutan dari kecil ke besar adalah <b>0,4, 0,5, 0,75</b>, yaitu <b>B</b>.'},
+{t:'multi',q:'Pilih semua pernyataan yang benar tentang 1/4.',o:['1/4 = 0,25','1/4 = 25%','1/4 = 50%','1/4 = 25/100'],a:[0,1,3],s:'1/4 = 25/100 karena pembilang dan penyebut dikalikan 25. Dari 25/100 diperoleh 0,25 dan 25%. Jadi yang benar adalah <b>A, B, dan D</b>.'},
+{t:'multi',q:'Pilih semua bentuk yang nilainya sama dengan 0,5.',o:['1/2','5/10','50%','1/5'],a:[0,1,2],s:'0,5 = 5/10 = 1/2. Jika diubah menjadi persen, 0,5 × 100% = 50%. Jadi yang benar adalah <b>A, B, dan C</b>.'},
+{t:'multi',q:'Pilih semua pernyataan yang benar tentang 3/10.',o:['3/10 = 0,3','3/10 = 30%','0,3 lebih besar dari 0,5','30% lebih kecil dari 50%'],a:[0,1,3],s:'3/10 = 0,3 dan = 30%. Selain itu 0,3 < 0,5, sehingga 30% < 50%. Jadi yang benar adalah <b>A, B, dan D</b>.'},
+{t:'tf',q:'Rara memiliki 2/5 bagian kue. Tentukan Benar atau Salah: 2/5 = 0,4.',o:['Benar','Salah'],a:[0],s:'Ubah 2/5 menjadi penyebut 10: 2/5 = 4/10. Pecahan 4/10 sama dengan <b>0,4</b>. Jadi pernyataan <b>Benar</b>.'},
+{t:'tf',q:'Rara memiliki 2/5 bagian kue. Tentukan Benar atau Salah: 40% lebih kecil dari 50%.',o:['Benar','Salah'],a:[0],s:'Bandingkan angka persennya: 40 dan 50. Karena <b>40 < 50</b>, maka 40% lebih kecil dari 50%. Jadi <b>Benar</b>.'},
+{t:'tf',q:'Budi membaca 3/4 bagian buku. Tentukan Benar atau Salah: 0,75 lebih kecil dari 0,5.',o:['Benar','Salah'],a:[1],s:'Bandingkan angka desimal pada tempat persepuluhan: 0,75 lebih besar daripada 0,50. Jadi pernyataan “0,75 lebih kecil dari 0,5” adalah <b>Salah</b>.'},
+{t:'mc',q:'Ibu membeli pizza yang dipotong menjadi 8 bagian sama besar. Raka makan 3 potong. Pecahan pizza yang masih tersisa adalah ....',o:['3/8','5/8','5/3','3/5'],a:[1],s:'Pizza terdiri dari 8 bagian. Dimakan 3 bagian, jadi sisa = 8 − 3 = <b>5 bagian</b>. Karena total 8 bagian, pecahan sisa = <b>5/8</b>. Jawabannya B.'},
+{t:'mc',q:'Hasil dari perbandingan berikut yang benar adalah ....',o:['1/2 > 3/4','4/5 < 7/10','0,6 < 0,8','35% > 50%'],a:[2],s:'Periksa satu per satu. 1/2 = 0,5, jadi bukan > 0,75. 4/5 = 0,8, jadi bukan < 0,7. <b>0,6 < 0,8</b> benar. 35% juga bukan > 50%. Jadi jawabannya C.'},
+{t:'mc',q:'Siti mempunyai pita sepanjang 1 meter. Ia menggunakan 3/10 meter. Pita yang tersisa adalah ....',o:['0,3 meter','0,5 meter','0,7 meter','0,8 meter'],a:[2],s:'Panjang awal = 1 meter = 10/10 meter. Digunakan 3/10 meter. Sisa = 10/10 − 3/10 = <b>7/10 meter</b> = <b>0,7 meter</b>. Jawabannya C.'},
+{t:'mc',q:'Dalam kelas terdapat 20 siswa. Sebanyak 60% membawa bekal. Banyak siswa yang tidak membawa bekal adalah ....',o:['8 siswa','10 siswa','12 siswa','14 siswa'],a:[0],s:'60% dari 20 = 60/100 × 20 = 12 siswa. Jadi yang tidak membawa bekal = 20 − 12 = <b>8 siswa</b>. Jawabannya A.'}
 ];
 const f=document.getElementById('quiz');
 qs.forEach(function(x,i){
@@ -55,7 +55,7 @@ els.forEach(function(e){if(e.checked)e.parentElement.classList.add(Number(e.valu
 }
 const answerText=expected.map(function(v){return '<b>'+String.fromCharCode(65+v)+'. '+x.o[v]+'</b>';}).join(' dan ');
 const fb=document.getElementById('fb'+i);
-if(ok){fb.innerHTML='<span style="color:#2e7d32">✓ Benar!</span>';}else if(!chosen.length){fb.innerHTML='<span style="color:#c62828">⚠️ Belum dijawab.<br>Jawaban benar: '+answerText+'</span>';}else{fb.innerHTML='<span style="color:#c62828">✗ Salah.<br>Jawaban benar: '+answerText+'</span>';}
+if(ok){fb.innerHTML='<span style="color:#2e7d32">✓ Benar! Jawaban benar: '+answerText+'</span><div class="solution"><b>💡 Cara pengerjaan:</b><br>'+x.s+'</div>';}else if(!chosen.length){fb.innerHTML='<span style="color:#c62828">⚠️ Belum dijawab.<br>Jawaban benar: '+answerText+'</span><div class="solution"><b>💡 Cara pengerjaan:</b><br>'+x.s+'</div>';}else{fb.innerHTML='<span style="color:#c62828">✗ Salah.<br>Jawaban benar: '+answerText+'</span><div class="solution"><b>💡 Cara pengerjaan:</b><br>'+x.s+'</div>';}
 });
 document.getElementById('result').style.display='block';
 document.getElementById('score').textContent=score+' / '+qs.length;
