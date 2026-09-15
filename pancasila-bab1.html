@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pancasila Kelas 4 — Bab 1 Harmoni dalam Keberagaman</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:linear-gradient(135deg,#eef8f2,#f4efff);color:#263238}
+.top{background:linear-gradient(135deg,#176b4b,#6a1b9a);color:#fff;padding:34px 16px;text-align:center}
+.top h1{margin:8px 0;font-size:clamp(26px,5vw,42px)}.wrap{max-width:1000px;margin:auto;padding:20px 14px}
+.panel{background:#fff;border-radius:18px;padding:18px;box-shadow:0 6px 22px #0002;margin-bottom:18px}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-weight:800;margin-bottom:6px}.field input{width:100%;padding:12px 13px;border:1px solid #cfd8dc;border-radius:10px;font-size:16px}
+.progress{height:10px;background:#eceff1;border-radius:999px;overflow:hidden;margin-top:12px}.progress>div{height:100%;background:#6a1b9a;width:0%;transition:width .2s}
+.question{border:1px solid #e0e0e0;border-radius:16px;padding:17px;margin:14px 0}.question.correct{border-color:#2e7d32;background:#f3fbf4}.question.incorrect{border-color:#c62828;background:#fff5f5}
+.qhead{font-weight:800;line-height:1.5;margin-bottom:12px}.opt{display:block;margin:8px 0}.opt label{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid #e0e0e0;border-radius:10px;cursor:pointer}.opt input{margin-top:3px;accent-color:#6a1b9a}.opt label:hover{background:#faf7ff}
+.feedback{display:none;margin-top:10px;padding:10px;border-radius:10px;font-size:14px;line-height:1.45}.question.checked .feedback{display:block}.question.correct .feedback{background:#e8f5e9}.question.incorrect .feedback{background:#ffebee}
+.actions{display:flex;flex-wrap:wrap;gap:10px}.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:800;font-size:15px;cursor:pointer;min-height:44px}.primary{background:#6a1b9a;color:#fff}.secondary{background:#eceff1;color:#263238}.danger{background:#c62828;color:#fff}
+.result{display:none;text-align:center;border:2px solid #6a1b9a}.result.show{display:block}.score{font-size:42px;font-weight:900;color:#6a1b9a}.small{color:#607d8b;font-size:14px}.history table{width:100%;border-collapse:collapse}.history th,.history td{padding:9px;border-bottom:1px solid #e0e0e0;text-align:left;font-size:14px}.home{display:inline-block;text-decoration:none;background:#fff;color:#176b4b;padding:9px 14px;border-radius:10px;font-weight:800;margin-top:10px}
+@media(max-width:600px){.meta{grid-template-columns:1fr}.question{padding:14px}.actions .btn{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<header class="top">
+<div>📚 MEDIA PEMBELAJARAN INTERAKTIF</div>
+<h1>Bab 1 — Harmoni dalam Keberagaman</h1>
+<p>Pendidikan Pancasila • Kelas 4 (Shaka) • 50 Soal</p>
+<a class="home" href="pancasila-menu.html">← Kembali ke Menu Pancasila</a>
+</header>
+<main class="wrap">
+<section class="panel">
+<div class="meta">
+<div class="field"><label for="nama">Nama siswa</label><input id="nama" type="text" maxlength="80" placeholder="Tulis nama siswa"></div>
+<div><strong>Petunjuk</strong><p class="small">Pilih satu jawaban untuk setiap soal. Setelah selesai, tekan <b>Periksa & Simpan Nilai</b>. Nilai dan riwayat pengerjaan tersimpan di browser perangkat ini.</p></div>
+</div>
+<div id="status" class="small" aria-live="polite">0 dari 50 soal terjawab.</div>
+<div class="progress" aria-hidden="true"><div id="bar"></div></div>
+</section>
+<form id="quizForm" class="panel"></form>
+<section class="panel">
+<div class="actions">
+<button class="btn primary" id="checkBtn" type="button">✅ Periksa & Simpan Nilai</button>
+<button class="btn secondary" id="historyBtn" type="button">📊 Lihat Hasil Tersimpan</button>
+<button class="btn danger" id="resetBtn" type="button">🔄 Mulai Ulang</button>
+</div>
+</section>
+<section id="result" class="panel result" aria-live="polite">
+<h2>Hasil Pengerjaan</h2>
+<div class="score" id="score"></div>
+<p id="resultText"></p>
+<p class="small" id="savedText"></p>
+</section>
+<section id="history" class="panel history" style="display:none">
+<h2>📊 Riwayat Nilai Tersimpan</h2>
+<div id="historyContent"></div>
+</section>
+</main>
+<script>
+const questions = [
+{"n":1,"q":"Harmoni dalam keberagaman dapat terwujud apabila setiap orang ....","o":[{"k":"A","t":"memiliki kebiasaan yang sama"},{"k":"B","t":"saling menerima dan menghargai"},{"k":"C","t":"mengutamakan kelompok sendiri"},{"k":"D","t":"menghindari orang yang berbeda"}],"a":"B"},
+{"n":2,"q":"Dalam cerita 'Taman Mini Kelas Kita', bahan yang dibawa Raras adalah ....","o":[{"k":"A","t":"kain batik bekas"},{"k":"B","t":"tempurung kelapa"},{"k":"C","t":"kertas berhias huruf Mandarin"},{"k":"D","t":"botol plastik"}],"a":"A"},
+{"n":3,"q":"Masalah yang terjadi ketika kelompok Rafi mulai berdiskusi adalah ....","o":[{"k":"A","t":"mereka tidak membawa bahan"},{"k":"B","t":"mereka menolak mengerjakan taman"},{"k":"C","t":"mereka saling memotong dan memaksakan ide"},{"k":"D","t":"mereka kehilangan seluruh tanaman"}],"a":"C"},
+{"n":4,"q":"Pelajaran utama dari keberhasilan kelompok Rafi adalah ....","o":[{"k":"A","t":"hasil terbaik harus dibuat sendiri"},{"k":"B","t":"satu gagasan harus mengalahkan gagasan lain"},{"k":"C","t":"perbedaan perlu dihilangkan"},{"k":"D","t":"perbedaan dapat menjadi kekuatan"}],"a":"D"},
+{"n":5,"q":"Identitas diri terbentuk antara lain dari ....","o":[{"k":"A","t":"keluarga, kebiasaan, lingkungan, dan budaya"},{"k":"B","t":"nilai ujian saja"},{"k":"C","t":"barang yang dimiliki saja"},{"k":"D","t":"pendapat teman saja"}],"a":"A"},
+{"n":6,"q":"Mengenal identitas diri dapat meningkatkan rasa percaya diri karena ....","o":[{"k":"A","t":"merasa lebih hebat daripada orang lain"},{"k":"B","t":"dapat meremehkan kekurangan teman"},{"k":"C","t":"menyadari keunikan dan kelebihan diri"},{"k":"D","t":"tidak membutuhkan bantuan siapa pun"}],"a":"C"},
+{"n":7,"q":"Identitas keluarga adalah ....","o":[{"k":"A","t":"jumlah barang yang dimiliki keluarga"},{"k":"B","t":"ciri khas atau karakter sebuah keluarga"},{"k":"C","t":"nama seluruh teman anggota keluarga"},{"k":"D","t":"peraturan yang berlaku di sekolah"}],"a":"B"},
+{"n":8,"q":"Contoh kebiasaan yang dapat menjadi identitas keluarga adalah ....","o":[{"k":"A","t":"mengikuti upacara sekolah"},{"k":"B","t":"mengerjakan ujian di kelas"},{"k":"C","t":"bermain saat jam istirahat"},{"k":"D","t":"makan dan berdoa bersama"}],"a":"D"},
+{"n":9,"q":"Identitas teman dapat dikenali melalui hal-hal berikut, kecuali ....","o":[{"k":"A","t":"hobi dan sifat"},{"k":"B","t":"suku dan bahasa"},{"k":"C","t":"nilai jual barangnya"},{"k":"D","t":"nama dan alamat"}],"a":"C"},
+{"n":10,"q":"Mengapa perbedaan identitas teman dapat membuat kehidupan lebih menarik?","o":[{"k":"A","t":"kita dapat saling belajar hal baru"},{"k":"B","t":"kita dapat menentukan siapa yang terbaik"},{"k":"C","t":"kita dapat membentuk kelompok tertutup"},{"k":"D","t":"kita dapat mengejek kebiasaan lain"}],"a":"A"},
+{"n":11,"q":"Bullying atau perundungan merupakan perilaku yang ....","o":[{"k":"A","t":"terjadi tidak sengaja dan sekali saja"},{"k":"B","t":"sengaja, berulang, dan menyakiti orang lain"},{"k":"C","t":"bertujuan membantu teman belajar"},{"k":"D","t":"selalu berupa permainan bersama"}],"a":"B"},
+{"n":12,"q":"Berikut yang termasuk bentuk bullying tidak langsung adalah ....","o":[{"k":"A","t":"mengajak teman belajar"},{"k":"B","t":"memberikan pertolongan"},{"k":"C","t":"memuji hasil karya teman"},{"k":"D","t":"membicarakan teman di belakangnya"}],"a":"D"},
+{"n":13,"q":"Jika melihat teman mengalami bullying, tindakan yang tepat adalah ....","o":[{"k":"A","t":"diam agar tidak terlibat"},{"k":"B","t":"ikut menertawakan korban"},{"k":"C","t":"menghibur dan melaporkan kepada guru"},{"k":"D","t":"menyebarkan kejadian tersebut"}],"a":"C"},
+{"n":14,"q":"Radikalisme dalam materi diartikan sebagai cara berpikir yang ....","o":[{"k":"A","t":"keras dan tidak menerima perbedaan"},{"k":"B","t":"terbuka terhadap semua pendapat"},{"k":"C","t":"mengutamakan musyawarah"},{"k":"D","t":"menghormati pilihan orang lain"}],"a":"A"},
+{"n":15,"q":"Pada cerita tentang baju hari Jumat, tindakan Niko yang menunjukkan sikap memusuhi perbedaan adalah ....","o":[{"k":"A","t":"memakai baju berwarna hitam"},{"k":"B","t":"berbicara di depan kelas"},{"k":"C","t":"memperhatikan pakaian teman"},{"k":"D","t":"memaksa semua teman memakai warna yang sama"}],"a":"D"},
+{"n":16,"q":"Keberagaman budaya Indonesia antara lain tampak dalam perbedaan ....","o":[{"k":"A","t":"warna seragam sekolah"},{"k":"B","t":"bahasa, tarian, pakaian, dan rumah adat"},{"k":"C","t":"nilai ujian dan jadwal pelajaran"},{"k":"D","t":"ukuran buku dan alat tulis"}],"a":"B"},
+{"n":17,"q":"Semboyan yang mengikat keberagaman menjadi satu identitas nasional adalah ....","o":[{"k":"A","t":"Tut Wuri Handayani"},{"k":"B","t":"Ing Ngarsa Sung Tuladha"},{"k":"C","t":"Bhinneka Tunggal Ika"},{"k":"D","t":"Rajin Pangkal Pandai"}],"a":"C"},
+{"n":18,"q":"Sistem kekerabatan matrilineal merupakan ciri budaya suku ....","o":[{"k":"A","t":"Minangkabau"},{"k":"B","t":"Dayak"},{"k":"C","t":"Sunda"},{"k":"D","t":"Bugis"}],"a":"A"},
+{"n":19,"q":"Kebebasan memeluk agama dan kepercayaan di Indonesia dijamin dalam ....","o":[{"k":"A","t":"UUD 1945 Pasal 27 Ayat (1)"},{"k":"B","t":"UUD 1945 Pasal 28 Ayat (1)"},{"k":"C","t":"UUD 1945 Pasal 30 Ayat (1)"},{"k":"D","t":"UUD 1945 Pasal 29 Ayat (2)"}],"a":"D"},
+{"n":20,"q":"Sikap yang tepat sebelum menilai perilaku teman yang berbeda agama adalah ....","o":[{"k":"A","t":"langsung menyimpulkan sifatnya"},{"k":"B","t":"mencari informasi dan memahami alasannya"},{"k":"C","t":"menceritakannya kepada semua teman"},{"k":"D","t":"memaksanya mengikuti kebiasaan kita"}],"a":"B"},
+{"n":21,"q":"Memberikan cap bahwa semua penganut agama tertentu memiliki sifat yang sama disebut ....","o":[{"k":"A","t":"toleransi"},{"k":"B","t":"empati"},{"k":"C","t":"stereotyping"},{"k":"D","t":"kolaborasi"}],"a":"C"},
+{"n":22,"q":"Zahwa menolak makanan setelah membaca bahwa kandungannya dilarang oleh agamanya. Sikap yang sebaiknya kita tunjukkan adalah ....","o":[{"k":"A","t":"menganggap Zahwa sombong"},{"k":"B","t":"menghormati keputusan Zahwa"},{"k":"C","t":"memaksanya mencoba makanan"},{"k":"D","t":"menjauhinya saat makan"}],"a":"B"},
+{"n":23,"q":"Sikap toleransi dalam kehidupan beragama ditunjukkan dengan ....","o":[{"k":"A","t":"mengganggu teman yang sedang beribadah"},{"k":"B","t":"memaksakan keyakinan kepada teman"},{"k":"C","t":"menghormati cara ibadah agama lain"},{"k":"D","t":"menganggap agama sendiri boleh menghina agama lain"}],"a":"C"},
+{"n":24,"q":"Mengapa perbedaan tidak boleh dijadikan bahan ejekan?","o":[{"k":"A","t":"karena perbedaan merupakan hal wajar yang harus dihargai"},{"k":"B","t":"karena semua orang harus memiliki kesukaan yang sama"},{"k":"C","t":"karena hanya orang dewasa yang boleh berbeda"},{"k":"D","t":"karena perbedaan harus disembunyikan"}],"a":"A"},
+{"n":25,"q":"Tujuan permainan 'Lingkar Cerita' adalah ....","o":[{"k":"A","t":"memilih budaya yang paling baik"},{"k":"B","t":"menyeragamkan kebiasaan seluruh murid"},{"k":"C","t":"menguji kemampuan menghafal nama teman"},{"k":"D","t":"memahami keberagaman dan melatih empati"}],"a":"D"},
+{"n":26,"q":"Dalam permainan Lingkar Cerita, sikap yang harus dilakukan ketika teman sedang bercerita adalah ....","o":[{"k":"A","t":"menyela untuk memperbaiki ceritanya"},{"k":"B","t":"mendengarkan dengan penuh empati"},{"k":"C","t":"membandingkan dengan cerita sendiri"},{"k":"D","t":"berbicara dengan teman lainnya"}],"a":"B"},
+{"n":27,"q":"Tujuan utama permainan Lingkar Cerita adalah ....","o":[{"k":"A","t":"menentukan cerita yang paling menarik"},{"k":"B","t":"menyamakan pengalaman seluruh peserta"},{"k":"C","t":"memahami keberagaman dan melatih empati"},{"k":"D","t":"menguji kemampuan menghafal cerita"}],"a":"C"},
+{"n":28,"q":"Persatuan di tengah perbedaan berarti kemampuan untuk ....","o":[{"k":"A","t":"tetap bersama dan saling menghargai"},{"k":"B","t":"menghapus seluruh perbedaan"},{"k":"C","t":"mendahulukan kelompok sendiri"},{"k":"D","t":"mengikuti pendapat satu orang"}],"a":"A"},
+{"n":29,"q":"Berikut yang menandakan tumbuhnya persatuan adalah ....","o":[{"k":"A","t":"persaingan antaranggota"},{"k":"B","t":"keseragaman seluruh anggota"},{"k":"C","t":"dominasi anggota terkuat"},{"k":"D","t":"adanya tujuan bersama"}],"a":"D"},
+{"n":30,"q":"Dalam persatuan, setiap anggota sebaiknya ....","o":[{"k":"A","t":"memiliki kemampuan yang sama"},{"k":"B","t":"mengikuti anggota paling kuat"},{"k":"C","t":"mempunyai peran yang bermakna"},{"k":"D","t":"mengerjakan semua tugas sendiri"}],"a":"C"},
+{"n":31,"q":"Perilaku yang menunjukkan persatuan ketika bekerja dalam kelompok adalah ....","o":[{"k":"A","t":"memaksakan pembagian tugas yang sama"},{"k":"B","t":"membagi tugas sesuai kemampuan anggota"},{"k":"C","t":"menyerahkan pekerjaan kepada satu orang"},{"k":"D","t":"mengabaikan pendapat anggota lain"}],"a":"B"},
+{"n":32,"q":"Mengajak semua teman bermain tanpa memandang suku dan agama merupakan contoh ....","o":[{"k":"A","t":"menjalin persatuan"},{"k":"B","t":"memaksakan kehendak"},{"k":"C","t":"membentuk kelompok tertutup"},{"k":"D","t":"menghindari perbedaan"}],"a":"A"},
+{"n":33,"q":"Para pahlawan dari berbagai latar belakang dapat mencapai tujuan kemerdekaan karena ....","o":[{"k":"A","t":"berasal dari daerah yang sama"},{"k":"B","t":"memiliki budaya yang seragam"},{"k":"C","t":"mengutamakan kepentingan pribadi"},{"k":"D","t":"bersatu untuk mencapai tujuan bersama"}],"a":"D"},
+{"n":34,"q":"Kebersamaan yang harmonis dapat dimulai dengan ....","o":[{"k":"A","t":"menertawakan kesalahan teman"},{"k":"B","t":"memaksakan pendapat pribadi"},{"k":"C","t":"mendengarkan pendapat teman"},{"k":"D","t":"memilih teman berdasarkan suku"}],"a":"C"},
+{"n":35,"q":"Informasi di media sosial perlu disikapi dengan hati-hati karena ....","o":[{"k":"A","t":"seluruh informasi selalu benar"},{"k":"B","t":"dapat mengandung hoaks dan provokasi"},{"k":"C","t":"hanya boleh dibaca orang dewasa"},{"k":"D","t":"semua berita harus disebarkan kembali"}],"a":"B"},
+{"n":36,"q":"Tindakan yang tepat sebelum menyebarkan informasi ke grup kelas adalah ....","o":[{"k":"A","t":"memeriksa kebenaran informasinya"},{"k":"B","t":"langsung meneruskannya"},{"k":"C","t":"menambahkan cerita sendiri"},{"k":"D","t":"mengirimkannya secara berulang"}],"a":"A"},
+{"n":37,"q":"Kerja sama adalah kegiatan yang dilakukan bersama-sama untuk ....","o":[{"k":"A","t":"menentukan anggota paling hebat"},{"k":"B","t":"menyamakan seluruh kemampuan"},{"k":"C","t":"mencapai tujuan yang sama"},{"k":"D","t":"menghindari tanggung jawab"}],"a":"C"},
+{"n":38,"q":"Tradisi gotong royong masyarakat Bugis untuk memindahkan rumah disebut ....","o":[{"k":"A","t":"Rambu Solo"},{"k":"B","t":"Mappalette Bola"},{"k":"C","t":"Marsialapari"},{"k":"D","t":"Gugur Gunung"}],"a":"B"},
+{"n":39,"q":"Marsialapari merupakan bentuk kerja sama masyarakat Mandailing dalam kegiatan ....","o":[{"k":"A","t":"memindahkan rumah"},{"k":"B","t":"melaksanakan pemakaman"},{"k":"C","t":"membangun tempat ibadah"},{"k":"D","t":"menanam dan memanen padi"}],"a":"D"},
+{"n":40,"q":"Menurut materi, toleransi tidak hanya berarti bersabar, tetapi juga ....","o":[{"k":"A","t":"memberi ruang kepada orang lain"},{"k":"B","t":"membiarkan pelanggaran aturan"},{"k":"C","t":"menyetujui semua pendapat"},{"k":"D","t":"mengikuti semua kebiasaan orang lain"}],"a":"A"},
+{"n":41,"q":"Mengakui dan menerima perbedaan berarti ....","o":[{"k":"A","t":"menilai budaya yang paling baik"},{"k":"B","t":"menyembunyikan perbedaan yang ada"},{"k":"C","t":"memilih teman yang sama saja"},{"k":"D","t":"tidak memaksa orang menjadi sama"}],"a":"D"},
+{"n":42,"q":"Contoh menghargai hak orang lain adalah ....","o":[{"k":"A","t":"mengganggu teman yang beribadah"},{"k":"B","t":"memberi kesempatan teman beribadah"},{"k":"C","t":"memaksakan kebiasaan sendiri"},{"k":"D","t":"menertawakan cara ibadah teman"}],"a":"B"},
+{"n":43,"q":"Berkomunikasi dengan sopan dalam menghadapi perbedaan dapat dilakukan dengan ....","o":[{"k":"A","t":"mengejek logat bicara teman"},{"k":"B","t":"memotong penjelasan teman"},{"k":"C","t":"menggunakan kata-kata yang baik"},{"k":"D","t":"meninggikan suara agar menang"}],"a":"C"},
+{"n":44,"q":"Berpikir sebelum bereaksi dapat menghindarkan kita dari ....","o":[{"k":"A","t":"prasangka dan penilaian terburu-buru"},{"k":"B","t":"sikap saling menghargai"},{"k":"C","t":"hubungan yang harmonis"},{"k":"D","t":"pemahaman terhadap orang lain"}],"a":"A"},
+{"n":45,"q":"Niko mengejek Fei karena bentuk matanya berbeda. Perbuatan Niko termasuk ....","o":[{"k":"A","t":"sikap toleran"},{"k":"B","t":"kerja sama"},{"k":"C","t":"sikap empati"},{"k":"D","t":"perilaku tidak toleran"}],"a":"D"},
+{"n":46,"q":"Program Sedekah Sampah di Masjid Baitul Makmur memberikan manfaat lingkungan berupa ....","o":[{"k":"A","t":"meningkatkan jumlah sampah di TPA"},{"k":"B","t":"mengurangi sampah dan pencemaran lingkungan"},{"k":"C","t":"mencampurkan semua jenis sampah"},{"k":"D","t":"membuang sampah ke ekosistem laut"}],"a":"B"},
+{"n":47,"q":"Dana hasil penjualan sampah anorganik dalam Program Sedekah Sampah digunakan untuk ....","o":[{"k":"A","t":"membantu operasional dan kegiatan sosial masjid"},{"k":"B","t":"membeli barang pribadi pengurus"},{"k":"C","t":"membangun pusat perbelanjaan"},{"k":"D","t":"membayar perjalanan wisata jemaah"}],"a":"A"},
+{"n":48,"q":"Proyek Mural Cerita Keberagaman Budaya Indonesia bertujuan untuk ....","o":[{"k":"A","t":"memilih satu budaya terbaik"},{"k":"B","t":"menyeragamkan budaya seluruh daerah"},{"k":"C","t":"memperkenalkan dan melestarikan budaya Indonesia"},{"k":"D","t":"mengganti budaya daerah dengan budaya modern"}],"a":"C"},
+{"n":49,"q":"Dalam proyek mural, kegiatan pada pertemuan hari ketiga adalah ....","o":[{"k":"A","t":"melakukan persiapan dan membuat sketsa"},{"k":"B","t":"mewarnai latar belakang mural"},{"k":"C","t":"menggambar elemen budaya utama"},{"k":"D","t":"meresmikan mural bersama masyarakat"}],"a":"C"},
+{"n":50,"q":"Proyek mural menjadi wujud persatuan dalam keberagaman karena ....","o":[{"k":"A","t":"dikerjakan sendiri oleh murid terbaik"},{"k":"B","t":"semua kelompok menggambar budaya yang sama"},{"k":"C","t":"setiap kelompok bersaing mengalahkan kelompok lain"},{"k":"D","t":"murid bekerja sama menampilkan beragam budaya"}],"a":"D"}
+];
+const KEY = 'shaka-kelas4-pancasila-bab1-results-v1';
+const form = document.getElementById('quizForm');
+const status = document.getElementById('status');
+const bar = document.getElementById('bar');
+const result = document.getElementById('result');
+const score = document.getElementById('score');
+const resultText = document.getElementById('resultText');
+const savedText = document.getElementById('savedText');
+const history = document.getElementById('history');
+const historyContent = document.getElementById('historyContent');
+const nama = document.getElementById('nama');
+function render(){
+  form.innerHTML = questions.map(x => `<section class="question" id="q-${x.n}"><div class="qhead">${x.n}. ${x.q}</div>${x.o.map(o => `<div class="opt"><label><input type="radio" name="q${x.n}" value="${o.k}"><span><b>${o.k}.</b> ${o.t}</span></label></div>`).join('')}<div class="feedback" id="fb-${x.n}"></div></section>`).join('');
+  form.addEventListener('change', updateProgress); updateProgress();
+}
+function updateProgress(){const answered=questions.filter(x=>form.querySelector(`input[name="q${x.n}"]:checked`)).length;status.textContent=`${answered} dari ${questions.length} soal terjawab.`;bar.style.width=`${answered/questions.length*100}%`;}
+function loadResults(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+function saveResults(rows){localStorage.setItem(KEY,JSON.stringify(rows.slice(-20)))}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function renderHistory(){const rows=loadResults();if(!rows.length){historyContent.innerHTML='<p class="small">Belum ada nilai yang tersimpan.</p>';return}historyContent.innerHTML=`<div style="overflow:auto"><table><thead><tr><th>Waktu</th><th>Nama</th><th>Benar</th><th>Nilai</th></tr></thead><tbody>${rows.slice().reverse().map(r=>`<tr><td>${r.time}</td><td>${escapeHtml(r.name)}</td><td>${r.correct}/${questions.length}</td><td><b>${r.score}</b></td></tr>`).join('')}</tbody></table></div>`;}
+document.getElementById('checkBtn').addEventListener('click',()=>{
+  const unanswered=questions.filter(x=>!form.querySelector(`input[name="q${x.n}"]:checked`));
+  if(unanswered.length){alert(`Masih ada ${unanswered.length} soal yang belum dijawab. Silakan lengkapi semua soal.`);document.getElementById(`q-${unanswered[0].n}`).scrollIntoView({behavior:'smooth',block:'center'});return;}
+  let correct=0;questions.forEach(x=>{const box=document.getElementById(`q-${x.n}`);const picked=box.querySelector(`input[name="q${x.n}"]:checked`).value;const ok=picked===x.a;if(ok)correct++;box.classList.add('checked',ok?'correct':'incorrect');const chosen=x.o.find(o=>o.k===picked);const answer=x.o.find(o=>o.k===x.a);document.getElementById(`fb-${x.n}`).textContent=ok?`Benar. Jawaban ${chosen.k} sesuai dengan kunci jawaban.`:`Belum tepat. Jawaban yang benar adalah ${answer.k}. ${answer.t}`;});
+  const nilai=Math.round(correct/questions.length*100);const nm=nama.value.trim()||'Tanpa Nama';const now=new Date();const time=now.toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'});const rows=loadResults();rows.push({name:nm,correct,score:nilai,time});saveResults(rows);score.textContent=`${nilai}`;resultText.textContent=`${nm}: ${correct} dari ${questions.length} jawaban benar.`;savedText.textContent=`Nilai disimpan pada ${time} di browser perangkat ini.`;result.classList.add('show');renderHistory();result.scrollIntoView({behavior:'smooth',block:'center'});
+});
+document.getElementById('historyBtn').addEventListener('click',()=>{history.style.display=history.style.display==='none'?'block':'none';renderHistory();if(history.style.display==='block')history.scrollIntoView({behavior:'smooth',block:'center'});});
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Mulai ulang kuis? Jawaban yang sedang dipilih akan dihapus, tetapi riwayat nilai tetap tersimpan.')){render();result.classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});}});
+render();
+</script>
+</body>
+</html>
