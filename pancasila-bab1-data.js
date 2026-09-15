@@ -1,0 +1,1 @@
+window.quizQuestions = "+__PLACEHOLDER__+";
