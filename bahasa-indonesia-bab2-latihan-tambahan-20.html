@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Latihan Tambahan 20 Soal — Bahasa Indonesia Bab 2</title>
+<style>
+:root{--blue:#1565c0;--blue2:#0d47a1;--gold:#f6c343;--bg:#eef6ff;--ink:#17324d;--line:#d6e4f0;--good:#e4f7e8;--bad:#ffe9e6}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:linear-gradient(135deg,#eef6ff,#fff9e8);color:var(--ink);line-height:1.55}.wrap{max-width:980px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-radius:24px;padding:28px;text-align:center}.hero h1{margin:7px 0;font-size:clamp(27px,5vw,40px)}.badge{display:inline-block;background:var(--gold);color:#3d3000;font-weight:800;padding:5px 12px;border-radius:999px}.home{display:inline-block;color:#fff;text-decoration:none;border:1px solid #ffffff66;border-radius:10px;padding:9px 13px;margin-top:8px}.sticky{position:sticky;top:0;z-index:5;background:#eef6ffed;padding:10px 0}.progress{background:#fff;border-radius:16px;padding:12px 15px;box-shadow:0 4px 15px #0002}.track{height:12px;background:#e8eef5;border-radius:99px;overflow:hidden;margin-top:8px}.bar{height:100%;width:0;background:var(--gold);transition:.2s}.card{background:#fff;border-radius:18px;padding:18px;margin:14px 0;border:1px solid var(--line);box-shadow:0 5px 18px #0001}.card h3{margin-top:0;color:var(--blue)}.option{display:block;border:2px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;cursor:pointer}.option:hover{border-color:var(--blue);background:#f4f9ff}.option input{margin-right:8px}.actions{text-align:center;padding:10px 0 20px}button{border:0;border-radius:12px;padding:13px 20px;font-size:16px;font-weight:800;background:var(--blue);color:#fff;cursor:pointer;margin:5px}button.alt{background:var(--gold);color:#3d3000}.result{display:none;background:#fff;border-radius:20px;padding:24px;margin:18px 0}.score{font-size:48px;font-weight:900;color:var(--blue);text-align:center}.msg{text-align:center;font-size:18px;font-weight:700}.good,.bad{padding:10px 12px;border-radius:10px;margin:7px 0}.good{background:var(--good)}.bad{background:var(--bad)}.footer{text-align:center;color:#607d94;padding:20px}@media(max-width:600px){.wrap{padding:10px}.card{padding:14px}}
+</style></head>
+<body><div class="wrap">
+<header class="hero"><span class="badge">Bahasa Indonesia • Kelas IV • Bab 2</span><h1>📝 Latihan Tambahan 20 Soal</h1><p>Soal baru yang berbeda dari kuis 30 soal sebelumnya, tetapi masih sesuai materi Bab 2 “Tugasku”.</p><a class="home" href="kelas4.html#bi">🏠 Menu Bahasa Indonesia</a></header>
+<div class="sticky"><div class="progress"><b>Progress: <span id="pt">0/20</span></b><div class="track"><div class="bar" id="bar"></div></div></div></div>
+<form id="quiz"></form><div class="actions"><button type="button" onclick="checkQuiz()">✅ Lihat Nilai</button><button type="button" class="alt" onclick="resetQuiz()">🔄 Ulangi</button></div>
+<section class="result" id="result"><h2 style="text-align:center">Hasil Latihan</h2><div class="score" id="score"></div><div class="msg" id="msg"></div><div id="review"></div></section>
+<div class="footer">Latihan Tambahan • Bahasa Indonesia Kelas IV • Bab 2 “Tugasku”</div></div>
+<script>
+const data=[
+['Bacalah kalimat: “Raka menyiram bunga setiap pagi.” Kegiatan yang dilakukan Raka adalah ....',['menyapu halaman','menyiram bunga','membaca buku','membersihkan kelas'],1],
+['Kalimat yang menunjukkan tanggung jawab di rumah adalah ....',['Dina membiarkan piring kotor','Dina merapikan tempat tidurnya','Dina menolak membantu ibu','Dina bermain saat diminta belajar'],1],
+['Informasi penting yang menjadi inti sebuah paragraf disebut ....',['ide pokok','tokoh','dialog','judul buku'],0],
+['Untuk menemukan informasi tersurat dalam teks, kita dapat ....',['menebak tanpa membaca','membaca teks dengan teliti','hanya melihat gambar','mengabaikan judul'],1],
+['Kata “bisa” pada kalimat “Ular itu memiliki bisa” bermakna ....',['mampu','racun','pandai','dapat'],1],
+['Kata “bisa” pada kalimat “Salsa bisa menyelesaikan tugasnya” bermakna ....',['racun','mampu','ular','bahaya'],1],
+['Pasangan kata yang memiliki bunyi dan tulisan sama tetapi maknanya berbeda adalah ....',['bisa–bisa','rajin–tekun','besar–kecil','indah–cantik'],0],
+['Kata dasar “tulis” jika mendapat awalan me- menjadi ....',['mentulis','menulis','memtulis','metulis'],1],
+['Kata dasar “catat” jika mendapat awalan me- menjadi ....',['mencatat','menyatat','mengcatat','mecatat'],0],
+['Kata dasar “gambar” jika mendapat awalan me- menjadi ....',['menggambar','menyambar','memgambar','mengambar'],0],
+['Kata dasar “baca” jika mendapat awalan me- menjadi ....',['membaca','menbaca','mengbaca','mecaba'],0],
+['Kalimat yang menggunakan kata berimbuhan me- dengan tepat adalah ....',['Siti menulis cerita.','Siti mentulis cerita.','Siti metulis cerita.','Siti menulisakan cerita.'],0],
+['Kata hubung yang tepat: “Beni ingin membaca buku, ... adiknya ingin bermain.”',['dan','tetapi','atau','lalu'],1],
+['Kata hubung “atau” digunakan untuk menunjukkan ....',['pilihan','pertentangan','penambahan','sebab'],0],
+['Kalimat “Ayah membaca koran lalu Ibu menyiapkan sarapan” termasuk ....',['kalimat tunggal','kalimat majemuk setara','kata tanya','kalimat perintah'],1],
+['Kalimat majemuk setara yang menyatakan penambahan adalah ....',['Rina belajar dan Dito menggambar.','Rina belajar tetapi Dito bermain.','Rina belajar atau Dito bermain.','Rina belajar sedangkan Dito tidur.'],0],
+['Tujuan membaca teks dengan saksama adalah ....',['mendapatkan informasi dengan tepat','agar cepat selesai saja','menghafal semua kata','mengubah isi teks'],0],
+['Jika sekolah memiliki lahan yang sempit, kegiatan penghijauan dapat dilakukan dengan ....',['menanam dalam pot','menebang semua tanaman','membuang tanah','menutup semua jendela'],0],
+['Salah satu manfaat tanaman bagi lingkungan adalah ....',['membuat lingkungan lebih panas','membantu mengurangi panas','mengotori udara','mengurangi kebutuhan air sampai nol'],1],
+['Ketika melihat keran air masih terbuka setelah digunakan, tindakan yang tepat adalah ....',['membiarkannya','segera menutup keran','memanggil teman untuk melihat','menunggu air habis'],1]
+];
+const form=document.getElementById('quiz');
+data.forEach((item,i)=>{const card=document.createElement('section');card.className='card';let html='<h3>'+(i+1)+'. '+item[0]+'</h3>';item[1].forEach((op,j)=>{html+='<label class="option"><input type="radio" name="q'+i+'" value="'+j+'" onchange="progress()"><b>'+String.fromCharCode(65+j)+'.</b> '+op+'</label>'});card.innerHTML=html;form.appendChild(card)});
+function progress(){let n=0;data.forEach((_,i)=>{if(document.querySelector('input[name="q'+i+'"]:checked'))n++});pt.textContent=n+'/20';bar.style.width=(n/20*100)+'%'}
+function checkQuiz(){let score=0,review='';data.forEach((item,i)=>{const el=document.querySelector('input[name="q'+i+'"]:checked');const chosen=el?Number(el.value):-1;if(chosen===item[2]){score++;review+='<div class="good"><b>'+(i+1)+'. Benar</b> — '+item[1][item[2]]+'</div>'}else{review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+(chosen<0?'Belum dijawab':item[1][chosen])+'<br>Jawaban benar: <b>'+item[1][item[2]]+'</b></div>'}});const nilai=Math.round(score/20*100);document.getElementById('score').textContent=score+' / 20';document.getElementById('msg').textContent='Nilai: '+nilai+' — '+(nilai>=90?'🌟 Sangat baik!':nilai>=75?'👏 Bagus!':nilai>=60?'💪 Terus berlatih!':'📚 Pelajari kembali Bab 2, lalu coba lagi.');document.getElementById('review').innerHTML=review;document.getElementById('result').style.display='block';window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+function resetQuiz(){form.reset();document.getElementById('result').style.display='none';progress();window.scrollTo({top:0,behavior:'smooth'})}
+</script></body></html>
