@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kuis Bahasa Indonesia Bab 2 — Tugasku</title>
+<style>
+:root{--blue:#1565c0;--blue2:#0d47a1;--gold:#f6c343;--bg:#eef6ff;--ink:#17324d;--line:#d6e4f0;--good:#e4f7e8;--bad:#ffe9e6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#eef6ff,#fff9e8);color:var(--ink);line-height:1.55}.wrap{max-width:980px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-radius:24px;padding:28px;text-align:center;box-shadow:0 10px 30px #0d47a120}.hero h1{margin:7px 0;font-size:clamp(28px,5vw,42px)}.badge{display:inline-block;background:var(--gold);color:#3d3000;font-weight:800;padding:5px 12px;border-radius:999px}.home{display:inline-block;color:#fff;text-decoration:none;border:1px solid #ffffff66;border-radius:10px;padding:9px 13px;margin-top:8px}.sticky{position:sticky;top:0;z-index:5;background:#eef6ffed;backdrop-filter:blur(8px);padding:10px 0}.progress{background:#fff;border-radius:16px;padding:12px 15px;box-shadow:0 4px 15px #00000010}.track{height:12px;background:#e8eef5;border-radius:99px;overflow:hidden;margin-top:8px}.bar{height:100%;width:0;background:var(--gold);transition:.2s}.card{background:#fff;border-radius:18px;padding:18px;margin:14px 0;border:1px solid #e0ebf4;box-shadow:0 5px 18px #0d47a110}.card h3{margin-top:0;color:var(--blue)}.option{display:block;border:2px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;cursor:pointer;background:#fff;transition:.15s}.option:hover{border-color:var(--blue);background:#f4f9ff}.option input{margin-right:8px;accent-color:var(--blue)}.actions{text-align:center;padding:10px 0 20px}button{border:0;border-radius:12px;padding:13px 20px;font-size:16px;font-weight:800;background:var(--blue);color:#fff;cursor:pointer;margin:5px}button.alt{background:var(--gold);color:#3d3000}.result{display:none;background:#fff;border-radius:20px;padding:24px;margin:18px 0;box-shadow:0 6px 20px #0001}.score{font-size:48px;font-weight:900;color:var(--blue);text-align:center}.msg{text-align:center;font-size:18px;font-weight:700}.good,.bad{padding:10px 12px;border-radius:10px;margin:7px 0}.good{background:var(--good);border-left:5px solid #42a665}.bad{background:var(--bad);border-left:5px solid #c95b4d}.footer{text-align:center;color:#607d94;padding:20px;font-size:14px}@media(max-width:600px){.wrap{padding:10px}.card{padding:14px}.hero{padding:22px 15px}.option{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><span class="badge">Bahasa Indonesia • Kelas IV SD • Bab 2</span><h1>📘 Kuis “Tugasku”</h1><p>30 soal pilihan ganda interaktif berdasarkan materi Bab 2: informasi dari teks, homonim, awalan <b>me-</b>, kalimat majemuk setara, serta teks tentang tugas, perpustakaan, penghijauan, dan hemat air.</p><a class="home" href="kelas4-menu.html">🏠 Menu Kelas 4</a></header>
+<div class="sticky"><div class="progress"><b>Progress: <span id="pt">0/30</span></b><div class="track"><div class="bar" id="bar"></div></div></div></div>
+<form id="quiz"></form>
+<div class="actions"><button type="button" onclick="checkQuiz()">✅ Lihat Nilai</button><button type="button" class="alt" onclick="resetQuiz()">🔄 Ulangi Kuis</button></div>
+<section class="result" id="result"><h2 style="text-align:center">Hasil Kuis</h2><div class="score" id="score"></div><div class="msg" id="msg"></div><div id="review"></div></section>
+<div class="footer">Media Pembelajaran Interaktif • Bahasa Indonesia Kelas IV • Bab 2 “Tugasku”</div>
+</div>
+<script>
+const data=[
+['Tugas adalah sesuatu yang harus dilakukan oleh ....',['guru saja','setiap orang','orang tua saja','kepala sekolah'],1],
+['Salah satu contoh tugas anak di rumah adalah ....',['bermain sepanjang hari','tidur siang','merapikan tempat tidur','menonton televisi'],2],
+['Dalam sebuah cerita, gagasan yang menjadi dasar pengembangan paragraf disebut ....',['judul','tokoh','ide pokok','latar'],2],
+['Kata yang memiliki lebih dari satu makna disebut ....',['sinonim','antonim','homonim','imbuhan'],2],
+['Pada kalimat “Genting di atap rumah Beni pecah”, makna kata “genting” adalah ....',['keadaan berbahaya','penutup atap rumah','keadaan darurat','keadaan sulit'],1],
+['Pada kalimat “Dalam keadaan genting, keluarga Beni siap saling membantu”, makna “genting” adalah ....',['penutup atap','bagian rumah','keadaan yang berbahaya','genteng rumah'],2],
+['Kata berikut yang merupakan homonim adalah ....',['rajin','besar','bisa','pintar'],2],
+['Pada kalimat “Rina bisa mengerjakan tugas sendiri”, kata “bisa” berarti ....',['racun','mampu','ular','berbahaya'],1],
+['Kata dasar dari “mengajar” adalah ....',['meng','ajar','ngajar','mengajar'],1],
+['Kata dasar “sapu” jika diberi awalan me- menjadi ....',['mesapu','mensapu','menyapu','mengsapu'],2],
+['Kata dasar “bantu” jika diberi awalan me- menjadi ....',['membantu','menbantu','menyantu','mengbantu'],0],
+['Kata “memiliki” berasal dari kata dasar ....',['milik','miliki','lik','memilik'],0],
+['Kalimat majemuk setara terbentuk dari ....',['satu kata','satu kalimat','dua atau lebih kalimat tunggal yang digabungkan','beberapa kata tanpa predikat'],2],
+['Kalimat “Rina membaca buku dan Siti menulis tugas” merupakan kalimat ....',['tunggal','majemuk setara','majemuk bertingkat','tidak lengkap'],1],
+['Kata hubung yang tepat untuk menyatakan pertentangan adalah ....',['dan','atau','tetapi','serta'],2],
+['Perhatikan kalimat: “Citra membeli buku tulis dan pensil.” Kata hubung yang digunakan adalah ....',['atau','dan','tetapi','sedangkan'],1],
+['Perpustakaan umum adalah tempat yang menghimpun buku, bahan cetakan, dan rekaman lain untuk kepentingan ....',['keluarga','masyarakat umum','pedagang','guru saja'],1],
+['Salah satu contoh perpustakaan umum adalah ....',['perpustakaan pribadi','perpustakaan kamar','Perpustakaan Nasional','rak buku di rumah'],2],
+['Jika tidak memiliki halaman, tanaman dapat ditanam menggunakan ....',['lemari','pot','meja','papan tulis'],1],
+['Penghijauan merupakan salah satu usaha penataan lingkungan dengan menggunakan .... sebagai alatnya.',['tanaman','buku','kendaraan','bangunan'],0],
+['Dalam teks “Penghijauan”, gerakan penghijauan dapat dilakukan dengan ....',['menanam satu atau dua pohon','menebang pohon','membeli tanah sebanyak-banyaknya','mengubah semua halaman menjadi lapangan'],0],
+['Tanaman dan air dapat membantu .... panas.',['menambah','mengurangi','menghilangkan semua','memindahkan'],1],
+['Menurut teks “Hematlah Air”, menghemat air merupakan salah satu tugas kita untuk menjaga ....',['kebersihan kelas','kelestarian alam','perpustakaan','peralatan sekolah'],1],
+['Hani lupa menutup keran setelah ....',['bermain sepeda','mencuci tangan','makan malam','belajar'],1],
+['Sikap yang tepat setelah melakukan kesalahan adalah ....',['menyalahkan orang lain','berpura-pura tidak tahu','mengakui kesalahan dan memperbaikinya','meninggalkan tugas'],2],
+['Pada kalimat “Ayah mengantar Ibu ke bank”, kata “bank” bermakna ....',['tepi sungai','tempat menyimpan atau mengelola uang','tempat duduk','tumpukan barang'],1],
+['Pada kalimat “Bang Tohir memiliki warung bakso sendiri”, kata “warung” merupakan ....',['homonim','kata hubung','kata kerja','kata sifat'],2],
+['Kata berimbuhan me- yang tepat dari kata dasar “pesona” adalah ....',['mepesona','memesona','menpesona','mempesona'],1],
+['Kata berimbuhan me- yang tepat adalah ....',['melapor, membuat, mencampur','menyapu, menjaga, memacul','menaruh, metambah, merebus','memancing, menyaring, menggelar'],3],
+['Dalam kalimat “Kamar Hani bersih, sedangkan kamar Heri kotor”, kata hubung “sedangkan” menyatakan ....',['penambahan','pilihan','pertentangan/perbandingan','urutan'],2]
+];
+const form=document.getElementById('quiz');
+data.forEach((item,i)=>{const card=document.createElement('section');card.className='card';let html='<h3>'+(i+1)+'. '+item[0]+'</h3>';item[1].forEach((op,j)=>{html+='<label class="option"><input type="radio" name="q'+i+'" value="'+j+'" onchange="progress()"><b>'+String.fromCharCode(65+j)+'.</b> '+op+'</label>'});card.innerHTML=html;form.appendChild(card)});
+function progress(){let n=0;data.forEach((_,i)=>{if(document.querySelector('input[name="q'+i+'"]:checked'))n++});document.getElementById('pt').textContent=n+'/30';document.getElementById('bar').style.width=(n/30*100)+'%'}
+function checkQuiz(){let score=0,review='';data.forEach((item,i)=>{const el=document.querySelector('input[name="q'+i+'"]:checked');const chosen=el?Number(el.value):-1;if(chosen===item[2]){score++;review+='<div class="good"><b>'+(i+1)+'.</b> Benar: '+item[1][item[2]]+'</div>'}else{review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+(chosen<0?'Belum dijawab':item[1][chosen])+'<br>Jawaban benar: <b>'+item[1][item[2]]+'</b></div>'}});const nilai=Math.round(score/30*100);document.getElementById('score').textContent=score+' / 30';document.getElementById('msg').textContent='Nilai: '+nilai+' — '+(nilai>=90?'🌟 Sangat baik!':nilai>=75?'👏 Bagus!':nilai>=60?'💪 Terus berlatih!':'📚 Pelajari kembali materi Bab 2, lalu coba lagi.');document.getElementById('review').innerHTML=review;document.getElementById('result').style.display='block';window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+function resetQuiz(){form.reset();document.getElementById('result').style.display='none';progress();window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>
