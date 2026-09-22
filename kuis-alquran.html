@@ -24,5 +24,5 @@ function progress(){let n=0;data.forEach((x,i)=>{if(document.querySelector('inpu
 function checkQuiz(){let score=0,review="";data.forEach((item,i)=>{let el=document.querySelector('input[name="q'+i+'"]:checked');if(el&&Number(el.value)===item.answer){score++;review+='<div class="good"><b>'+(i+1)+'.</b> Benar — '+item.options[item.answer]+'</div>';}else{let mine=el?item.options[Number(el.value)]:"Belum dijawab";review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+mine+'<br>Jawaban benar: <b>'+item.options[item.answer]+'</b></div>';}});let nilai=Math.round(score/25*100);document.getElementById("score").textContent=score+" / 25";document.getElementById("msg").textContent="Nilai: "+nilai+" — "+(nilai>=90?"🌟 Hebat!":nilai>=75?"👏 Bagus!":nilai>=60?"💪 Terus berlatih!":"📚 Yuk pelajari lagi materinya!");document.getElementById("review").innerHTML=review;document.getElementById("result").style.display="block";window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});}
 function resetQuiz(){form.reset();document.getElementById("result").style.display="none";progress();window.scrollTo({top:0,behavior:"smooth"});}
 </script>
-</body>
+<script src="quiz-review-helper.js"></script></body>
 </html>
