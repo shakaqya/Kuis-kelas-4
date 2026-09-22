@@ -1,6 +1,6 @@
 <!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASTS 1 Bagian 1 — Matematika Kelas 4</title>
 <style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:linear-gradient(135deg,#fff8e1,#e3f2fd);color:#263238}.top{background:linear-gradient(135deg,#ef6c00,#1565c0);color:#fff;padding:30px 16px;text-align:center}.top h1{margin:8px 0}.wrap{max-width:920px;margin:auto;padding:18px 14px}.card,.q,.result,.student{background:#fff;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 5px 18px #0001}.intro{border-left:6px solid #ef6c00}.q h3{margin-top:0}.opt{display:block;border:1px solid #d6dee6;border-radius:11px;padding:11px;margin:8px 0;cursor:pointer}.opt:hover{background:#fff8e1}.actions{position:sticky;bottom:0;background:#ffffffee;padding:12px;border-top:1px solid #ddd;display:flex;gap:9px;flex-wrap:wrap;z-index:5}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;color:#fff}.check{background:#ef6c00}.corr{background:#1565c0}.save{background:#00897b}.reset{background:#6d4c41}.home{background:#fff;color:#ef6c00;text-decoration:none;display:inline-block}.review{display:none}.ok{border-left:5px solid #2e7d32;padding:11px;background:#edf8ef;margin:9px 0}.bad{border-left:5px solid #c62828;padding:11px;background:#fff1f1;margin:9px 0}.solution{margin-top:8px;padding:10px;background:#e3f2fd;border-radius:9px;line-height:1.55}.saved{display:none;background:#e8f5e9;color:#1b5e20;border-radius:12px;padding:12px}.visual-guide{margin-top:10px;border:1px solid #cfd8dc;border-radius:12px;padding:10px;background:linear-gradient(90deg,#fff8e1,#e3f2fd)}.visual-title{font-weight:800;margin-bottom:7px}.visual-flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.visual-step{background:#fff;border:1px solid #bbdefb;border-radius:10px;padding:7px 9px;font-weight:700}.visual-arrow{font-weight:900;color:#1565c0}.fraction-bar{display:flex;height:18px;margin:8px 0;border:1px solid #90a4ae;border-radius:6px;overflow:hidden}.fraction-bar span{flex:1;border-right:1px solid #fff}.fraction-note{font-size:13px;color:#455a64}.student input{width:100%;padding:11px;border:1px solid #ccd6df;border-radius:10px;font-size:16px}.arabic{font-size:25px;direction:rtl}.tag{display:inline-block;background:#fff3e0;color:#e65100;border-radius:20px;padding:4px 9px;font-size:12px;font-weight:800}</style></head><body>
-<header class="top"><div>📚 MEDIA PEMBELAJARAN INTERAKTIF</div><h1>➗ ASTS 1 Bagian 1 — Matematika Kelas 4</h1><p>Pecahan, desimal, persen, pecahan senilai, perbandingan, dan soal cerita</p><a class="btn home" href="matematika-asts1-menu.html">🏠 Menu Matematika</a></header>
+<header class="top"><div>📚 MEDIA PEMBELAJARAN INTERAKTIF</div><h1>➗ ASTS 1 Bagian 1 — Matematika Kelas 4</h1><p>Pecahan, desimal, persen, pecahan senilai, perbandingan, dan soal cerita</p><a class="btn home" href="matematika-asts1-menu.html?v=20260922">🏠 Menu Matematika</a></header>
 <main class="wrap"><section class="card intro"><h2>📖 Petunjuk</h2><p>Kerjakan 20 soal. Soal bertanda <b>Pilih semua</b> memiliki lebih dari satu jawaban benar. Setelah selesai tekan <b>Periksa Nilai</b>. Gunakan <b>Periksa Jawaban</b> untuk melihat jawaban benar dan <b>langkah pengerjaan pada setiap soal</b>.</p><p><b>Materi:</b> pecahan biasa, membandingkan/mengurutkan pecahan, pecahan senilai, pecahan desimal persepuluhan dan perseratusan, persen, serta soal cerita.</p></section>
 <section class="student"><b>Nama siswa</b><input id="nama" placeholder="Tulis nama siswa"></section><div id="quiz"></div>
 <div class="actions"><button id="checkBtn" class="btn check" type="button">✅ Periksa Nilai</button><button id="correctionBtn" class="btn corr" type="button">📝 Periksa Jawaban</button><button id="saveBtn" class="btn save" type="button">💾 Simpan Nilai</button><button id="resetBtn" class="btn reset" type="button">🔄 Ulangi</button></div>
@@ -16,14 +16,29 @@ function visualGuide(x){let q=x.q.toLowerCase(),title='🧩 Visual langkah',step
 function correction(){if(!last)periksaNilai();let h='<h2>📝 Periksa Jawaban dan Cara Mengerjakan</h2>';data.forEach((x,i)=>{const s=sel(i),ok=same(s,x.a),correct=Array.isArray(x.a)?x.a:[x.a];h+='<div class="'+(ok?'ok':'bad')+'"><b>Soal '+(i+1)+' — '+(ok?'Benar':'Perlu diperbaiki')+'</b><br><span>'+esc(x.q)+'</span><br>Jawaban kamu: <b>'+esc(s.length?s.map(j=>x.o[j]).join(', '):'Belum dijawab')+'</b><br>Jawaban benar: <b>'+esc(correct.map(j=>x.o[j]).join(', '))+'</b><div class="solution"><b>📌 Cara mengerjakan:</b><br>'+esc(x.e)+'</div>'+visualGuide(x)+'</div>';});const r=document.getElementById('review');r.innerHTML=h;r.style.display='block';r.scrollIntoView({behavior:'smooth'});}
 function saveScore(){if(!last)periksaNilai();const nama=(document.getElementById('nama').value||'Siswa').trim();const item={title:'ASTS 1 Bagian 1 Matematika Kelas 4',nama,nilai:last.nilai,benar:last.benar,total:last.total,waktu:new Date().toLocaleString('id-ID')};const key='nilai-asts1-matematika-kelas4';const h=JSON.parse(localStorage.getItem(key)||'[]');h.unshift(item);localStorage.setItem(key,JSON.stringify(h.slice(0,50)));const s=document.getElementById('saved');s.textContent='✅ Nilai tersimpan untuk '+nama+': '+last.nilai+' ('+last.benar+'/'+last.total+').';s.style.display='block';}
 function resetQuiz(){render();last=null;document.getElementById('result').textContent='Belum diperiksa.';document.getElementById('review').style.display='none';document.getElementById('saved').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
-document.addEventListener('DOMContentLoaded',function(){
-  render();
-  const checkBtn=document.getElementById('checkBtn');
-  const correctionBtn=document.getElementById('correctionBtn');
-  const saveBtn=document.getElementById('saveBtn');
-  const resetBtn=document.getElementById('resetBtn');
-  if(checkBtn) checkBtn.addEventListener('click',periksaNilai);
-  if(correctionBtn) correctionBtn.addEventListener('click',correction);
-  if(saveBtn) saveBtn.addEventListener('click',saveScore);
-  if(resetBtn) resetBtn.addEventListener('click',resetQuiz);
-});/* ASTS Math Kelas 4 controls fixed */</script></body></html>
+function initMathQuiz(){
+  try{
+    render();
+    const checkBtn=document.getElementById('checkBtn');
+    const correctionBtn=document.getElementById('correctionBtn');
+    const saveBtn=document.getElementById('saveBtn');
+    const resetBtn=document.getElementById('resetBtn');
+    if(checkBtn){checkBtn.type='button';checkBtn.onclick=function(e){e.preventDefault();periksaNilai();};}
+    if(correctionBtn){correctionBtn.type='button';correctionBtn.onclick=function(e){e.preventDefault();correction();};}
+    if(saveBtn){saveBtn.type='button';saveBtn.onclick=function(e){e.preventDefault();saveScore();};}
+    if(resetBtn){resetBtn.type='button';resetBtn.onclick=function(e){e.preventDefault();resetQuiz();};}
+  }catch(err){
+    console.error('Quiz Matematika gagal dimuat:',err);
+    const r=document.getElementById('result');
+    if(r) r.innerHTML='<h2>⚠️ Quiz belum siap</h2><p>Silakan muat ulang halaman. Jika masih terjadi, gunakan tombol kembali ke menu lalu buka quiz lagi.</p>';
+  }
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initMathQuiz,{once:true});
+}else{
+  initMathQuiz();
+}
+window.periksaNilai=periksaNilai;
+window.correction=correction;
+window.saveScore=saveScore;
+window.resetQuiz=resetQuiz;</script></body></html>
