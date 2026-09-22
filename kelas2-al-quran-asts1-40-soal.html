@@ -16,4 +16,4 @@ function correction(){if(!lastScore)check();let html='<h2>📝 Koreksi Jawaban</
 function saveScore(){if(!lastScore)check();const nama=(document.getElementById('nama').value||'Siswa').trim();const item={title:"ASTS 1 Al-Qur'an Kelas 2 — 40 Soal",nama,nilai:lastScore.nilai,benar:lastScore.benar,total:lastScore.total,waktu:new Date().toLocaleString('id-ID')};const key='nilai-asts-alquran';const h=JSON.parse(localStorage.getItem(key)||'[]');h.unshift(item);localStorage.setItem(key,JSON.stringify(h.slice(0,50)));const s=document.getElementById('saved');s.textContent='✅ Nilai berhasil disimpan untuk '+nama+'. Nilai '+lastScore.nilai+' ('+lastScore.benar+'/'+lastScore.total+').';s.style.display='block';}
 function resetQuiz(){render();lastScore=null;document.getElementById('result').textContent='Belum diperiksa. Silakan jawab soal terlebih dahulu.';document.getElementById('review').style.display='none';document.getElementById('saved').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 render();
-</script></body></html>
+</script><script src="quiz-review-helper.js"></script></body></html>
