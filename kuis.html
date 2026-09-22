@@ -67,5 +67,5 @@ function progress(){let n=0;data.forEach((_,i)=>{if(document.querySelector('inpu
 function checkQuiz(){let score=0,review='';data.forEach((item,i)=>{const el=document.querySelector('input[name="q'+i+'"]:checked');const chosen=el?Number(el.value):-1;if(chosen===item[2]){score++;review+='<div class="good"><b>'+(i+1)+'.</b> Benar: '+item[1][item[2]]+'</div>'}else{review+='<div class="bad"><b>'+(i+1)+'.</b> Jawabanmu: '+(chosen<0?'Belum dijawab':item[1][chosen])+'<br>Jawaban benar: <b>'+item[1][item[2]]+'</b></div>'}});const nilai=Math.round(score/40*100);document.getElementById('score').textContent=score+' / 40';document.getElementById('msg').textContent='Nilai: '+nilai+' — '+(nilai>=90?'🌟 Sangat baik!':nilai>=75?'👏 Bagus!':nilai>=60?'💪 Terus berlatih!':'📚 Pelajari kembali materinya, lalu coba lagi.');document.getElementById('review').innerHTML=review;document.getElementById('result').style.display='block';window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 function resetQuiz(){form.reset();document.getElementById('result').style.display='none';progress();window.scrollTo({top:0,behavior:'smooth'})}
 </script>
-</body>
+<script src="quiz-review-helper.js"></script></body>
 </html>
