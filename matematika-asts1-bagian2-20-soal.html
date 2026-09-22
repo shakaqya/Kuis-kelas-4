@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASTS 1 Bagian 2 — Matematika Kelas 4</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:linear-gradient(135deg,#fff8e1,#e3f2fd);color:#263238}
+.top{background:linear-gradient(135deg,#ef6c00,#1565c0);color:#fff;padding:30px 16px;text-align:center}.top h1{margin:8px 0}
+.wrap{max-width:920px;margin:auto;padding:18px 14px}.card,.q,.result,.student{background:#fff;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 5px 18px #0001}
+.intro{border-left:6px solid #ef6c00}.q h3{margin-top:8px}.opt{display:block;border:1px solid #d6dee6;border-radius:11px;padding:11px;margin:8px 0;cursor:pointer}.opt:hover{background:#fff8e1}
+.actions{position:sticky;bottom:0;background:#ffffffee;padding:12px;border-top:1px solid #ddd;display:flex;gap:9px;flex-wrap:wrap;z-index:5}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;color:#fff}.check{background:#ef6c00}.corr{background:#1565c0}.save{background:#00897b}.reset{background:#6d4c41}.home{background:#fff;color:#ef6c00;text-decoration:none;display:inline-block}
+.review{display:none}.ok{border-left:5px solid #2e7d32;padding:11px;background:#edf8ef;margin:9px 0}.bad{border-left:5px solid #c62828;padding:11px;background:#fff1f1;margin:9px 0}
+.solution{margin-top:8px;padding:10px;background:#e3f2fd;border-radius:9px;line-height:1.6}.saved{display:none;background:#e8f5e9;color:#1b5e20;border-radius:12px;padding:12px}
+.student input{width:100%;padding:11px;border:1px solid #ccd6df;border-radius:10px;font-size:16px}.tag{display:inline-block;background:#fff3e0;color:#e65100;border-radius:20px;padding:4px 9px;font-size:12px;font-weight:800}
+.visual-guide{margin-top:10px;border:1px solid #cfd8dc;border-radius:12px;padding:10px;background:linear-gradient(90deg,#fff8e1,#e3f2fd)}.visual-title{font-weight:800;margin-bottom:7px}.visual-flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.visual-step{background:#fff;border:1px solid #bbdefb;border-radius:10px;padding:7px 9px;font-weight:700}.visual-arrow{font-weight:900;color:#1565c0}.fraction-note{font-size:13px;color:#455a64}
+</style></head><body>
+<header class="top"><div>📚 MEDIA PEMBELAJARAN INTERAKTIF</div><h1>➗ ASTS 1 Bagian 2 — Matematika Kelas 4</h1><p>Tantangan pecahan, desimal, persen, perbandingan dan soal cerita</p><a class="btn home" href="matematika-asts1-menu.html">🏠 Menu Matematika</a></header>
+<main class="wrap">
+<section class="card intro"><h2>📖 Petunjuk</h2><p>Kerjakan 20 soal. Beberapa soal bertanda <b>Pilih semua</b> memiliki lebih dari satu jawaban benar. Tekan <b>Periksa Nilai</b> untuk melihat skor. Tekan <b>Koreksi Jawaban</b> untuk melihat jawaban benar dan <b>cara mengerjakan setiap soal</b>.</p><p><b>Tingkat:</b> sedikit lebih menantang daripada Bagian 1. Gunakan penyamaan penyebut, konversi bentuk, dan penalaran soal cerita dengan teliti.</p></section>
+<section class="student"><b>Nama siswa</b><input id="nama" placeholder="Tulis nama siswa"></section>
+<div id="quiz"></div>
+<div class="actions">
+<button id="checkBtn" class="btn check" type="button">✅ Periksa Nilai</button>
+<button id="correctionBtn" class="btn corr" type="button">📝 Koreksi Jawaban</button>
+<button id="saveBtn" class="btn save" type="button">💾 Simpan Nilai</button>
+<button id="resetBtn" class="btn reset" type="button">🔄 Ulangi</button>
+</div>
+<div id="saved" class="saved"></div><section id="result" class="result">Belum diperiksa.</section><section id="review" class="card review"></section>
+</main>
+<script>
+const data=[
+{q:"Manakah yang nilainya paling besar?",o:["5/8","0,62","61%","3/5"],a:0,e:"Ubah semuanya ke desimal: 5/8=0,625; 0,62=0,620; 61%=0,61; 3/5=0,6. Nilai terbesar adalah 0,625, yaitu 5/8."},
+{q:"Pilih semua pecahan yang senilai dengan 3/5.",o:["6/10","9/15","12/25","15/25"],a:[0,1,3],multi:true,e:"Kalikan 3/5 dengan 2/2 menjadi 6/10, dengan 3/3 menjadi 9/15, dan dengan 5/5 menjadi 15/25. Jadi A, B, dan D benar."},
+{q:"Hasil dari 1/2 + 1/4 adalah ...",o:["2/6","3/4","2/4","5/8"],a:1,e:"Samakan penyebut menjadi 4. 1/2=2/4. Jadi 2/4+1/4=3/4."},
+{q:"Hasil dari 3/4 - 1/8 adalah ...",o:["2/8","4/8","5/8","7/8"],a:2,e:"Ubah 3/4 menjadi 6/8. Kemudian 6/8-1/8=5/8."},
+{q:"Sebuah pita panjangnya 2 meter. Rina menggunakan 3/4 meter. Berapa meter pita yang tersisa?",o:["1/4 m","1 1/4 m","1 1/2 m","2 1/4 m"],a:1,e:"Tulis 2 sebagai 8/4. Kurangkan 8/4-3/4=5/4=1 1/4 meter."},
+{q:"Pilih semua pernyataan yang benar.",o:["0,45 = 45%","0,45 = 45/100","0,45 = 9/20","0,45 = 4,5%"],a:[0,1,2],multi:true,e:"0,45 berarti 45/100. Disederhanakan dengan 5 menjadi 9/20. Dalam persen, 0,45=45%. Jadi A, B, dan C benar."},
+{q:"Urutan dari terbesar ke terkecil adalah ...",o:["7/10, 0,72, 3/4, 68%","3/4, 0,72, 7/10, 68%","0,72, 3/4, 7/10, 68%","3/4, 7/10, 0,72, 68%"],a:1,e:"Ubah ke desimal: 3/4=0,75; 0,72=0,72; 7/10=0,70; 68%=0,68. Jadi urutannya 3/4, 0,72, 7/10, 68%."},
+{q:"Nilai yang tepat untuk mengisi 2/5 = .../100 adalah ...",o:["20","25","40","50"],a:2,e:"Penyebut 5 harus dikalikan 20 agar menjadi 100. Pembilang 2 juga dikalikan 20: 2×20=40. Jadi 40/100."},
+{q:"Sebuah kelas memiliki 40 siswa. Sebanyak 3/5 siswa mengikuti klub sains. Berapa siswa yang mengikuti klub sains?",o:["18","20","24","25"],a:2,e:"Cari 3/5 dari 40. Pertama 40÷5=8, lalu 8×3=24. Jadi ada 24 siswa."},
+{q:"Harga sebuah buku Rp50.000. Toko memberi diskon 20%. Harga setelah diskon adalah ...",o:["Rp10.000","Rp30.000","Rp40.000","Rp45.000"],a:2,e:"Diskon 20% dari Rp50.000 = 20/100×50.000 = Rp10.000. Harga setelah diskon = Rp50.000-Rp10.000=Rp40.000."},
+{q:"Pilih semua bentuk yang sama dengan 3/4.",o:["0,75","75%","6/8","7/10"],a:[0,1,2],multi:true,e:"3/4=75/100=0,75 dan 75%. Kalikan 3/4 dengan 2/2 menjadi 6/8. Jadi A, B, dan C benar."},
+{q:"Manakah yang lebih dekat dengan 1?",o:["7/8","0,82","79%","4/5"],a:0,e:"Hitung jarak dari 1: 7/8=0,875 sehingga jaraknya 0,125; 0,82 jaraknya 0,18; 79% jaraknya 0,21; 4/5=0,8 jaraknya 0,2. Yang paling dekat adalah 7/8."},
+{q:"Siti memiliki 3/4 liter air. Ia menggunakan 0,25 liter. Sisa air adalah ...",o:["0,25 liter","0,5 liter","0,55 liter","1 liter"],a:1,e:"Ubah 3/4 menjadi 0,75. Kemudian 0,75-0,25=0,50. Jadi sisanya 0,5 liter."},
+{q:"Pilih semua pernyataan yang benar tentang 2/3.",o:["2/3 lebih besar dari 0,6","2/3 lebih kecil dari 0,7","2/3 = 66 2/3%","2/3 = 2,3"],a:[0,1,2],multi:true,e:"2/3≈0,666... sehingga lebih besar dari 0,6 dan lebih kecil dari 0,7. Dalam persen, 2/3×100%=66 2/3%. Jadi A, B, dan C benar."},
+{q:"Ibu mempunyai 1 1/2 kg tepung. Digunakan 3/4 kg. Berapa kg tepung yang tersisa?",o:["1/4 kg","1/2 kg","3/4 kg","1 kg"],a:2,e:"Ubah 1 1/2 menjadi 3/2=6/4. Kurangkan 6/4-3/4=3/4 kg."},
+{q:"Pecahan mana yang berada di antara 1/3 dan 1/2?",o:["1/4","3/8","2/3","5/8"],a:1,e:"Ubah ke penyebut 24: 1/3=8/24 dan 1/2=12/24. 3/8=9/24 berada di antara keduanya. Jadi jawabannya 3/8."},
+{q:"Sebuah tangki terisi 0,6 bagian. Kemudian ditambah 25% dari kapasitas tangki. Bagian tangki yang terisi sekarang adalah ...",o:["0,65","0,75","0,80","0,85"],a:1,e:"25%=0,25. Tambahkan ke 0,6: 0,6+0,25=0,85. Jadi jawaban yang benar sebenarnya 0,85, yaitu pilihan D."},
+{q:"Perhatikan soal berikut: Andi membaca 2/5 bagian buku pada Senin dan 1/4 bagian pada Selasa. Berapa bagian buku yang sudah dibaca?",o:["3/9","7/20","13/20","4/10"],a:1,e:"Samakan penyebut 5 dan 4 menjadi 20. 2/5=8/20 dan 1/4=5/20. Jumlahnya 13/20. Jadi jawaban seharusnya pilihan C."},
+{q:"Pilih semua nilai yang lebih besar dari 0,7.",o:["3/4","68%","0,72","7/10"],a:[0,2],multi:true,e:"3/4=0,75 dan 0,72 lebih besar dari 0,7. Sedangkan 68%=0,68 dan 7/10=0,7 tidak lebih besar. Jadi A dan C benar."},
+{q:"Sebuah resep membutuhkan 3/4 kg tepung. Persediaan 1 kg tepung. Setelah membuat resep, berapa persen tepung yang tersisa dari 1 kg persediaan awal?",o:["10%","20%","25%","75%"],a:2,e:"Tepung tersisa = 1-3/4=1/4 kg. Karena 1 kg=100%, maka 1/4 kg=25%. Jadi jawabannya 25%."}
+];
+/* Perbaikan konsistensi jawaban soal 17: 0,6 + 0,25 = 0,85 */
+data[16].a=3;
+data[17].a=2;
+let last=null;
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function render(){document.getElementById('quiz').innerHTML=data.map((x,i)=>'<section class="q"><span class="tag">Soal '+(i+1)+'</span><h3>'+esc(x.q)+'</h3>'+x.o.map((o,j)=>'<label class="opt"><input type="'+(x.multi?'checkbox':'radio')+'" name="q'+i+'" value="'+j+'"> '+esc(o)+'</label>').join('')+'</section>').join('');}
+function sel(i){if(data[i].multi)return [...document.querySelectorAll('input[name="q'+i+'"]:checked')].map(x=>+x.value);const x=document.querySelector('input[name="q'+i+'"]:checked');return x===null?[]:[+x.value];}
+function same(a,b){const aa=[...(Array.isArray(a)?a:[a])].sort((x,y)=>x-y),bb=[...(Array.isArray(b)?b:[b])].sort((x,y)=>x-y);return aa.length===bb.length&&aa.every((v,i)=>v===bb[i]);}
+function periksaNilai(){let benar=0,dijawab=0;data.forEach((x,i)=>{const s=sel(i);if(s.length)dijawab++;if(same(s,x.a))benar++;});last={benar,dijawab,total:data.length,nilai:Math.round(benar/data.length*100)};document.getElementById('result').innerHTML='<h2>📊 Hasil</h2><div style="font-size:42px;font-weight:900;color:#ef6c00">'+last.nilai+'</div><p>Benar <b>'+benar+'</b> dari '+data.length+' soal. Dijawab: <b>'+dijawab+'</b>.</p>';document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});}
+function visualGuide(x){let q=x.q.toLowerCase(),steps=['📖 Baca soal','🔢 Ubah ke bentuk yang sama','🧮 Hitung dengan teliti','✅ Cek kembali'];if(q.includes('diskon')||q.includes('persen'))steps=['📖 Tentukan nilai awal','💯 Ubah persen menjadi pecahan/desimal','✖️ Hitung bagian yang dicari','✅ Tentukan hasil akhir'];else if(q.includes('pecahan senilai')||q.includes('senilai'))steps=['📖 Perhatikan pecahan','✖️ Kalikan pembilang & penyebut dengan bilangan sama','🔍 Bandingkan nilainya','✅ Pilih semua yang sesuai'];else if(q.includes('urut')||q.includes('besar')||q.includes('antara'))steps=['📖 Baca semua nilai','🔄 Samakan bentuk menjadi desimal/penyebut','📊 Bandingkan nilainya','✅ Susun atau pilih jawaban'];return '<div class="visual-guide"><div class="visual-title">🧩 Visual langkah</div><div class="visual-flow">'+steps.map((s,i)=>'<span class="visual-step">'+s+'</span>'+((i<steps.length-1)?'<span class="visual-arrow">→</span>':'')).join('')+'</div><div class="fraction-note">💡 Ikuti urutan langkah dan cocokkan dengan penjelasan di atas.</div></div>';}
+function correction(){if(!last)periksaNilai();let h='<h2>📝 Koreksi Jawaban & Cara Mengerjakan</h2>';data.forEach((x,i)=>{const s=sel(i),ok=same(s,x.a),correct=Array.isArray(x.a)?x.a:[x.a];h+='<div class="'+(ok?'ok':'bad')+'"><b>Soal '+(i+1)+' — '+(ok?'Benar':'Perlu diperbaiki')+'</b><br><span>'+esc(x.q)+'</span><br>Jawaban kamu: <b>'+esc(s.length?s.map(j=>x.o[j]).join(', '):'Belum dijawab')+'</b><br>Jawaban benar: <b>'+esc(correct.map(j=>x.o[j]).join(', '))+'</b><div class="solution"><b>📌 Cara mengerjakan:</b><br>'+esc(x.e)+'</div>'+visualGuide(x)+'</div>';});const r=document.getElementById('review');r.innerHTML=h;r.style.display='block';r.scrollIntoView({behavior:'smooth'});}
+function saveScore(){if(!last)periksaNilai();const nama=(document.getElementById('nama').value||'Siswa').trim();const item={title:'ASTS 1 Bagian 2 Matematika Kelas 4',nama,nilai:last.nilai,benar:last.benar,total:last.total,waktu:new Date().toLocaleString('id-ID')};const key='nilai-asts1-matematika-kelas4';const h=JSON.parse(localStorage.getItem(key)||'[]');h.unshift(item);localStorage.setItem(key,JSON.stringify(h.slice(0,50)));const s=document.getElementById('saved');s.textContent='✅ Nilai tersimpan untuk '+nama+': '+last.nilai+' ('+last.benar+'/'+last.total+').';s.style.display='block';}
+function resetQuiz(){render();last=null;document.getElementById('result').textContent='Belum diperiksa.';document.getElementById('review').style.display='none';document.getElementById('saved').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
+function initMathQuiz2(){render();document.getElementById('checkBtn').onclick=e=>{e.preventDefault();periksaNilai()};document.getElementById('correctionBtn').onclick=e=>{e.preventDefault();correction()};document.getElementById('saveBtn').onclick=e=>{e.preventDefault();saveScore()};document.getElementById('resetBtn').onclick=e=>{e.preventDefault();resetQuiz()};}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initMathQuiz2,{once:true});else initMathQuiz2();
+</script></body></html>
