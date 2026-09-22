@@ -51,7 +51,7 @@ function buildReview(){
 function doCheck(){
  const candidates=[...document.querySelectorAll('button,input[type="button"],input[type="submit"]')].filter(b=>/periksa|check|lihat nilai|lihat hasil/i.test(b.innerText||b.value||'')&&!b.closest('#k4q-panel'));
  const b=candidates[0];if(b)b.click();
- setTimeout(()=>{buildReview();saveIfScore(false)},250);
+ setTimeout(()=>{buildReview()},250);
 }
 function saveIfScore(force){
  const s=numericScore();if(!s){if(force)alert('Periksa nilai terlebih dahulu, lalu tekan Simpan Nilai.');return}
