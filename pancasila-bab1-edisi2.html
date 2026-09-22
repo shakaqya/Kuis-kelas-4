@@ -63,4 +63,4 @@ function showHistory(){const arr=JSON.parse(localStorage.getItem('pancasila_bab1
 document.getElementById('check').onclick=()=>{if(!document.getElementById('nama').value.trim()){alert('Isi nama siswa terlebih dahulu.');document.getElementById('nama').focus();return}const r=getResults();const data={time:new Date().toLocaleString('id-ID'),name:document.getElementById('nama').value.trim(),correct:r.correct,answered:r.answered,score:r.score};saveLocal(data);document.getElementById('score').textContent=r.score;document.getElementById('resultText').textContent=`${data.name}: ${r.correct} benar dari 30 soal (${r.answered} dijawab). Nilai = ${r.score}.`;document.getElementById('result').classList.add('show');window.scrollTo({top:document.getElementById('result').offsetTop-20,behavior:'smooth'});};
 document.getElementById('hist').onclick=showHistory;document.getElementById('clear').onclick=()=>{if(confirm('Mulai ulang kuis Edisi 2?'))location.reload()};render();
 </script>
-</body></html>
+<script src="quiz-review-helper.js"></script></body></html>
